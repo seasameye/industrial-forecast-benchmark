@@ -1,4 +1,4 @@
-# Industrial Forecasting Benchmark with Known Future Inputs
+# Industrial Forecasting Benchmark with Known Future Control Inputs
 
 Industrial forecasting tasks often provide the input trajectory before
 prediction — a pump-voltage schedule, a sequence of valve commands. A model of
