@@ -4,10 +4,10 @@
 Examples
 --------
 # one entry, full budget (writes runs/<tag>.json)
-python train_main_table.py --dataset sysid_cascadedtanks --model imamba --device cuda
+python train_main_table.py --dataset sysid_cascadedtanks --model lstm --device cuda
 
 # a quick smoke test (one epoch)
-python train_main_table.py --dataset sysid_cascadedtanks --model imamba --epochs 1 --device cuda
+python train_main_table.py --dataset sysid_cascadedtanks --model lstm --epochs 1 --device cuda
 
 # every baseline of one dataset
 python train_main_table.py --dataset sysid_cascadedtanks --all-models --device cuda
@@ -74,7 +74,7 @@ def main():
     ap.add_argument("--dataset", required=True,
                     help="one of: nppad_sgtr_l60_h60, ventilator_l40_h40, pmsm_l60_h60, "
                          "sysid_cascadedtanks, sysid_wienerhammer, sysid_silverbox, tokamark_task_2-1")
-    ap.add_argument("--model", default=None, help="baseline name, e.g. imamba, lstm, dlinear")
+    ap.add_argument("--model", default=None, help="baseline name, e.g. lstm, dlinear, patchtst")
     ap.add_argument("--all-models", action="store_true", help="train every baseline of the dataset")
     ap.add_argument("--epochs", type=int, default=None, help="override the epoch budget (smoke test)")
     ap.add_argument("--device", default="cuda")

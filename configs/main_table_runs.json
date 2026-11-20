@@ -81,31 +81,6 @@
  },
  {
   "dataset": "nppad_sgtr_l60_h60",
-  "model": "imamba",
-  "model_config": {
-   "d_model": 64,
-   "n_state": 8,
-   "n_layers": 2,
-   "dropout": 0.0
-  },
-  "training_config": {
-   "epochs": 40,
-   "batch_size": 64,
-   "learning_rate": 0.001,
-   "weight_decay": 0.0001,
-   "patience": 8,
-   "gradient_clip": 1.0,
-   "lambda_id": 0.0,
-   "revin": false,
-   "train_frac": 1.0
-  },
-  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/imamba.pt",
-  "table_entry": {
-   "mse_normalized": 0.01159
-  }
- },
- {
-  "dataset": "nppad_sgtr_l60_h60",
   "model": "kite",
   "model_config": {
    "flow_dim": 256,
@@ -369,31 +344,6 @@
   "checkpoint": "checkpoints/pmsm_l60_h60/dlinear.pt",
   "table_entry": {
    "mse_normalized": 0.00124
-  }
- },
- {
-  "dataset": "pmsm_l60_h60",
-  "model": "imamba",
-  "model_config": {
-   "d_model": 64,
-   "n_state": 8,
-   "n_layers": 2,
-   "dropout": 0.0
-  },
-  "training_config": {
-   "epochs": 60,
-   "batch_size": 64,
-   "learning_rate": 0.001,
-   "weight_decay": 0.0001,
-   "patience": 15,
-   "gradient_clip": 1.0,
-   "lambda_id": 0.0,
-   "revin": false,
-   "train_frac": 1.0
-  },
-  "checkpoint": "checkpoints/pmsm_l60_h60/imamba.pt",
-  "table_entry": {
-   "mse_normalized": 0.00028
   }
  },
  {
@@ -662,31 +612,6 @@
   "checkpoint": "checkpoints/sysid_cascadedtanks/dlinear.pt",
   "table_entry": {
    "mse_normalized": 0.9132
-  }
- },
- {
-  "dataset": "sysid_cascadedtanks",
-  "model": "imamba",
-  "model_config": {
-   "d_model": 64,
-   "n_state": 8,
-   "n_layers": 2,
-   "dropout": 0.0
-  },
-  "training_config": {
-   "epochs": 40,
-   "batch_size": 64,
-   "learning_rate": 0.001,
-   "weight_decay": 0.0001,
-   "patience": 8,
-   "gradient_clip": 1.0,
-   "lambda_id": 0.0,
-   "revin": false,
-   "train_frac": 1.0
-  },
-  "checkpoint": "checkpoints/sysid_cascadedtanks/imamba.pt",
-  "table_entry": {
-   "mse_normalized": 0.1425
   }
  },
  {
@@ -965,31 +890,6 @@
  },
  {
   "dataset": "sysid_silverbox",
-  "model": "imamba",
-  "model_config": {
-   "d_model": 128,
-   "n_state": 16,
-   "n_layers": 2,
-   "dropout": 0.1
-  },
-  "training_config": {
-   "epochs": 80,
-   "batch_size": 32,
-   "learning_rate": 0.001,
-   "weight_decay": 0.0001,
-   "patience": 20,
-   "gradient_clip": 1.0,
-   "lambda_id": 0.0,
-   "revin": false,
-   "train_frac": 1.0
-  },
-  "checkpoint": "checkpoints/sysid_silverbox/imamba.pt",
-  "table_entry": {
-   "mse_normalized": 0.00259
-  }
- },
- {
-  "dataset": "sysid_silverbox",
   "model": "kite",
   "model_config": {
    "flow_dim": 256,
@@ -1264,31 +1164,6 @@
  },
  {
   "dataset": "sysid_wienerhammer",
-  "model": "imamba",
-  "model_config": {
-   "d_model": 64,
-   "n_state": 8,
-   "n_layers": 2,
-   "dropout": 0.0
-  },
-  "training_config": {
-   "epochs": 80,
-   "batch_size": 64,
-   "learning_rate": 0.001,
-   "weight_decay": 0.0001,
-   "patience": 12,
-   "gradient_clip": 1.0,
-   "lambda_id": 0.0,
-   "revin": false,
-   "train_frac": 1.0
-  },
-  "checkpoint": "checkpoints/sysid_wienerhammer/imamba.pt",
-  "table_entry": {
-   "mse_normalized": 0.00063
-  }
- },
- {
-  "dataset": "sysid_wienerhammer",
   "model": "kite",
   "model_config": {
    "flow_dim": 256,
@@ -1551,28 +1426,6 @@
  },
  {
   "dataset": "tokamark_task_2-1",
-  "model": "imamba",
-  "model_config": {
-   "d_model": 96,
-   "n_state": 16,
-   "n_layers": 2,
-   "dropout": 0.05
-  },
-  "training_config": {
-   "batch_size": 256,
-   "learning_rate": 0.001,
-   "epochs": null,
-   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
-  },
-  "checkpoint": null,
-  "table_entry": {
-   "mse_normalized": 0.01866,
-   "mae_normalized": 0.04394
-  },
-  "params": 930621
- },
- {
-  "dataset": "tokamark_task_2-1",
   "model": "kite",
   "model_config": {
    "flow_dim": 256,
@@ -1815,31 +1668,6 @@
   "checkpoint": "checkpoints/ventilator_l40_h40/dlinear.pt",
   "table_entry": {
    "mse_normalized": 0.0042
-  }
- },
- {
-  "dataset": "ventilator_l40_h40",
-  "model": "imamba",
-  "model_config": {
-   "d_model": 64,
-   "n_state": 8,
-   "n_layers": 2,
-   "dropout": 0.0
-  },
-  "training_config": {
-   "epochs": 40,
-   "batch_size": 64,
-   "learning_rate": 0.001,
-   "weight_decay": 0.0001,
-   "patience": 8,
-   "gradient_clip": 1.0,
-   "lambda_id": 0.0,
-   "revin": false,
-   "train_frac": 1.0
-  },
-  "checkpoint": "checkpoints/ventilator_l40_h40/imamba.pt",
-  "table_entry": {
-   "mse_normalized": 0.00102
   }
  },
  {

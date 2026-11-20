@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from typing import Any
 
-from .imamba import IntegralControlMamba
 from .lstm import LSTMEncDec
 from .official_dag import OfficialDAGAdapter
 from .official_timexer import OfficialTimeXerAdapter
@@ -19,7 +18,6 @@ def available_models() -> list[str]:
     return [
         "persistence",
         "lstm",
-        "imamba",
         "crosslinear",
         "tide",
         "timexer",
@@ -41,16 +39,6 @@ def build_model(name: str, d_y: int, d_u: int, L: int, H: int,
         return LSTMEncDec(d_y, d_u, hidden=kwargs.get("hidden", 128),
                           layers=kwargs.get("layers", 2),
                           dropout=kwargs.get("dropout", 0.1))
-    if key in ("imamba", "integral_mamba", "integralcontrolmamba"):
-        return IntegralControlMamba(
-            d_y=d_y,
-            d_u=d_u,
-            d_model=kwargs.get("d_model", 64),
-            n_state=kwargs.get("n_state", 8),
-            n_layers=kwargs.get("n_layers", 2),
-            max_horizon=H,
-            dropout=kwargs.get("dropout", 0.0),
-        )
     if key == "crosslinear":
         return TSLibAdapter("CrossLinear", d_y, d_u, L, H, **kwargs)
     if key == "tide":

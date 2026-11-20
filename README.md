@@ -5,7 +5,7 @@ prediction — a pump-voltage schedule, a sequence of valve commands. A model of
 the resulting response should preserve **prefix consistency**: changing a later
 action must not change predictions before that action.
 
-This repository provides seven industrial datasets and eleven forecasting models
+This repository provides seven industrial datasets and ten forecasting models
 under this setting. Each dataset supplies historical targets, historical
 exogenous inputs, and a known future control path.
 
@@ -20,7 +20,7 @@ pip install -r requirements.txt
 Train a model on a dataset:
 
 ```bash
-python train_main_table.py --dataset sysid_cascadedtanks --model imamba --device cuda
+python train_main_table.py --dataset sysid_cascadedtanks --model lstm --device cuda
 ```
 
 Evaluate a trained model:
