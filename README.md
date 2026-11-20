@@ -44,7 +44,7 @@ Select a single entry with `--only <dataset>/<model>` (evaluation) or
 | `train_main_table.py` | trains a model on a dataset |
 | `eval_main_table.py` | evaluates a trained model |
 
-## TokaMark
+## Note
 
 TokaMark Task 2–1 is not included because its windowed dataset is 7.2 GB. The
 raw measurements are publicly available from the original TokaMark publication
