@@ -25,5 +25,5 @@
   "mae_normalized": 0.09026
  },
  "source": "Supplementary Table S3 (no checkpoint released)",
- "params_note": "appendix prints 261,348; no configuration of this adapter produces it (the stated configuration builds to 292,964)."
+ "params_note": "PatchTST concatenates the future control path as input channels (exo_mode=future_as_channels) and processes channels independently, so its parameter count does not depend on the number of channels. The stated configuration (d=128, ff=256, 8 heads, 2 layers, patch 16, stride 8) builds to 292,964; no patch/stride/width combination produces the appendix value 261,348."
 }

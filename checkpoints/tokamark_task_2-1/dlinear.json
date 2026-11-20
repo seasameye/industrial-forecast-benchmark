@@ -3,7 +3,7 @@
  "dataset": "tokamark_task_2-1",
  "checkpoint": null,
  "model_config": {
-  "exo_mode": "hist",
+  "exo_mode": "future_as_channels",
   "moving_avg": 25,
   "individual": false
  },
@@ -20,5 +20,5 @@
   "mae_normalized": 0.1335
  },
  "source": "Supplementary Table S3 (no checkpoint released)",
- "params_note": "appendix prints 7,320, which is the value for the 60-step datasets; on TokaMark (L=20, H=100) the model builds to 4,200."
+ "params_note": "PatchTST and DLinear both concatenate the future control path as input channels (exo_mode=future_as_channels). DLinear is channel-independent with shared weights, so its parameter count does not depend on the number of channels: with L=20 and H=100 it is 4,200, whereas the appendix prints 7,320 (the value obtained for the 60-step datasets)."
 }

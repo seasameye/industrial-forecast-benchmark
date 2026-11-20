@@ -227,13 +227,13 @@
    "mae_normalized": 0.09026
   },
   "checkpoint": null,
-  "params_note": "appendix prints 261,348; no configuration of this adapter produces it (the stated configuration builds to 292,964)."
+  "params_note": "PatchTST concatenates the future control path as input channels (exo_mode=future_as_channels) and processes channels independently, so its parameter count does not depend on the number of channels. The stated configuration (d=128, ff=256, 8 heads, 2 layers, patch 16, stride 8) builds to 292,964; no patch/stride/width combination produces the appendix value 261,348."
  },
  {
   "dataset": "tokamark_task_2-1",
   "model": "dlinear",
   "model_config": {
-   "exo_mode": "hist",
+   "exo_mode": "future_as_channels",
    "moving_avg": 25,
    "individual": false
   },
@@ -250,7 +250,7 @@
    "mae_normalized": 0.1335
   },
   "checkpoint": null,
-  "params_note": "appendix prints 7,320, which is the value for the 60-step datasets; on TokaMark (L=20, H=100) the model builds to 4,200."
+  "params_note": "PatchTST and DLinear both concatenate the future control path as input channels (exo_mode=future_as_channels). DLinear is channel-independent with shared weights, so its parameter count does not depend on the number of channels: with L=20 and H=100 it is 4,200, whereas the appendix prints 7,320 (the value obtained for the 60-step datasets)."
  },
  {
   "dataset": "tokamark_task_2-1",
