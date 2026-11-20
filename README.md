@@ -47,8 +47,7 @@ different directory.
 | `data/` | windowed NPZ datasets |
 | `configs/main_table_runs.json` | configurations for each dataset–model pair |
 | `icb/` | models, adapters, evaluation protocol, training entry |
-| `third_party_repos/DAG/` | vendored TSLib code used by six adapters |
-| `reformer_pytorch.py` | vendored dependency of the TSLib attention layers |
+| `third_party_repos/DAG/` | vendored TSLib code used by six adapters, including its `reformer_pytorch` dependency |
 | `train_main_table.py` | trains a model on a dataset |
 | `eval_main_table.py` | evaluates a trained model |
 
