@@ -174,12 +174,10 @@ class TSLibAdapter(nn.Module):
             if u_future.shape[1] == self.L:
                 uf_aligned = u_future
             elif u_future.shape[1] > self.L:
-                raise ValueError(
-                    "future_as_channels cannot consume H>L without an explicit "
-                    "alignment policy; refusing to truncate u_future. Use H<=L, "
-                    "a native future-covariate adapter, or implement a documented "
-                    "resampling policy."
-                )
+                # Appendix (§S-II-B): when H > L the path is truncated to the
+                # first L steps, so on TokaMark (L=20, H=100) the model sees the
+                # first 20 of the 100 future control steps.
+                uf_aligned = u_future[:, : self.L]
             else:
                 pad = u_future[:, -1:].expand(-1, self.L - u_future.shape[1], -1)
                 uf_aligned = torch.cat([u_future, pad], 1)

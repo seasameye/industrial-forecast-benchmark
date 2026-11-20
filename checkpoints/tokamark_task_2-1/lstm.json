@@ -1,0 +1,22 @@
+{
+ "model": "lstm",
+ "dataset": "tokamark_task_2-1",
+ "checkpoint": null,
+ "model_config": {
+  "hidden": 128,
+  "layers": 2,
+  "dropout": 0.1
+ },
+ "training_config": {
+  "batch_size": 256,
+  "learning_rate": 0.001,
+  "epochs": null,
+  "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+ },
+ "params": 421021,
+ "table_entry": {
+  "mse_normalized": 0.02046,
+  "mae_normalized": 0.04474
+ },
+ "source": "Supplementary Table S3 (no checkpoint released)"
+}

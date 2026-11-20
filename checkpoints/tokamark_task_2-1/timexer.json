@@ -1,0 +1,25 @@
+{
+ "model": "timexer",
+ "dataset": "tokamark_task_2-1",
+ "checkpoint": null,
+ "model_config": {
+  "d_model": 256,
+  "d_ff": 512,
+  "n_heads": 8,
+  "e_layers": 2,
+  "patch_len": 4,
+  "dropout": 0.1
+ },
+ "training_config": {
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "epochs": null,
+  "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+ },
+ "params": 1775204,
+ "table_entry": {
+  "mse_normalized": 0.1105,
+  "mae_normalized": 0.0948
+ },
+ "source": "Supplementary Table S3 (no checkpoint released)"
+}

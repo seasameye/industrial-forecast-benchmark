@@ -1,0 +1,23 @@
+{
+ "model": "imamba",
+ "dataset": "tokamark_task_2-1",
+ "checkpoint": null,
+ "model_config": {
+  "d_model": 96,
+  "n_state": 16,
+  "n_layers": 2,
+  "dropout": 0.05
+ },
+ "training_config": {
+  "batch_size": 256,
+  "learning_rate": 0.001,
+  "epochs": null,
+  "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+ },
+ "params": 930621,
+ "table_entry": {
+  "mse_normalized": 0.01866,
+  "mae_normalized": 0.04394
+ },
+ "source": "Supplementary Table S3 (no checkpoint released)"
+}

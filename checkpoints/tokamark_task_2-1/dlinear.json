@@ -1,0 +1,20 @@
+{
+ "model": "dlinear",
+ "dataset": "tokamark_task_2-1",
+ "checkpoint": null,
+ "model_config": {
+  "moving_avg": 25
+ },
+ "training_config": {
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "epochs": null,
+  "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+ },
+ "params": 7320,
+ "table_entry": {
+  "mse_normalized": 0.1455,
+  "mae_normalized": 0.1335
+ },
+ "source": "Supplementary Table S3 (no checkpoint released)"
+}

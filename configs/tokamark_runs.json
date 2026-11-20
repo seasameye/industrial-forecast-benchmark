@@ -1,0 +1,249 @@
+[
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "imamba",
+  "model_config": {
+   "d_model": 96,
+   "n_state": 16,
+   "n_layers": 2,
+   "dropout": 0.05
+  },
+  "training_config": {
+   "batch_size": 256,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 930621,
+  "table_entry": {
+   "mse_normalized": 0.01866,
+   "mae_normalized": 0.04394
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "lstm",
+  "model_config": {
+   "hidden": 128,
+   "layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 256,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 421021,
+  "table_entry": {
+   "mse_normalized": 0.02046,
+   "mae_normalized": 0.04474
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "kite",
+  "model_config": {
+   "flow_dim": 256,
+   "flow_depth": 2,
+   "flow_head": 4,
+   "rank": 8,
+   "sampling_steps": 10,
+   "inference_samples": 8
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 6270087,
+  "table_entry": {
+   "mse_normalized": 0.2953,
+   "mae_normalized": 0.0937
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "dag",
+  "model_config": {
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 2,
+   "n_heads": 4,
+   "patch_len": 16,
+   "stride": 8,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 4698360,
+  "table_entry": {
+   "mse_normalized": 0.0706,
+   "mae_normalized": 0.1018
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "crosslinear",
+  "model_config": {
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "patch_len": 4,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 424824,
+  "table_entry": {
+   "mse_normalized": 0.05692,
+   "mae_normalized": 0.0602
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "tide",
+  "model_config": {
+   "d_model": 256,
+   "d_ff": 256,
+   "e_layers": 2,
+   "d_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 1298524,
+  "table_entry": {
+   "mse_normalized": 0.0656,
+   "mae_normalized": 0.076
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "timexer",
+  "model_config": {
+   "d_model": 256,
+   "d_ff": 512,
+   "n_heads": 8,
+   "e_layers": 2,
+   "patch_len": 4,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 1775204,
+  "table_entry": {
+   "mse_normalized": 0.1105,
+   "mae_normalized": 0.0948
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "timemixer",
+  "model_config": {
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 2,
+   "down_sampling_layers": 2,
+   "moving_avg": 25,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 162480,
+  "table_entry": {
+   "mse_normalized": 0.0375,
+   "mae_normalized": 0.06077
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "patchtst",
+  "model_config": {
+   "d_model": 128,
+   "d_ff": 256,
+   "n_heads": 8,
+   "e_layers": 2,
+   "patch_len": 16,
+   "stride": 8,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 261348,
+  "table_entry": {
+   "mse_normalized": 0.10281,
+   "mae_normalized": 0.09026
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "dlinear",
+  "model_config": {
+   "moving_avg": 25
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 7320,
+  "table_entry": {
+   "mse_normalized": 0.1455,
+   "mae_normalized": 0.1335
+  },
+  "checkpoint": null
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "persistence",
+  "model_config": {},
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "params": 0,
+  "table_entry": {
+   "mse_normalized": 0.1744,
+   "mae_normalized": 0.1062
+  },
+  "checkpoint": null
+ }
+]

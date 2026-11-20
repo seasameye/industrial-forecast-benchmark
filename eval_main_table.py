@@ -42,11 +42,21 @@ def main():
             if args.only and args.only not in tag:
                 continue
             if ds not in cache:
-                raw, stats, _ = load_npz(str(ROOT / "data" / f"{ds}.npz"), device=args.device)
+                npz = ROOT / "data" / f"{ds}.npz"
+                if not npz.exists():
+                    print("%-42s SKIP (data not included in this release)" % tag, flush=True)
+                    skipped += 1
+                    continue
+                raw, stats, _ = load_npz(str(npz), device=args.device)
                 cache[ds] = normalize_all(raw, stats)
-            data = cache[ds]
-            meta = json.loads((ROOT / "checkpoints" / ds / f"{mdl}.json").read_text())
-            if not (ROOT / meta["checkpoint"]).exists():
+            data = cache.get(ds)
+            meta_path = ROOT / "checkpoints" / ds / f"{mdl}.json"
+            if not meta_path.exists():
+                print("%-42s SKIP (config-only dataset)" % tag, flush=True)
+                skipped += 1
+                continue
+            meta = json.loads(meta_path.read_text())
+            if not meta.get("checkpoint") or not (ROOT / meta["checkpoint"]).exists():
                 print("%-42s SKIP (checkpoint in checkpoints_full.zip)" % tag, flush=True)
                 skipped += 1
                 continue

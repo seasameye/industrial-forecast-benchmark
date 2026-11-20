@@ -274,5 +274,51 @@
    "mse_normalized": 1.72935,
    "checkpoint": "checkpoints/sysid_silverbox/persistence.pt"
   }
+ },
+ "tokamark_task_2-1": {
+  "imamba": {
+   "mse_normalized": 0.01866,
+   "checkpoint": null
+  },
+  "lstm": {
+   "mse_normalized": 0.02046,
+   "checkpoint": null
+  },
+  "kite": {
+   "mse_normalized": 0.2953,
+   "checkpoint": null
+  },
+  "dag": {
+   "mse_normalized": 0.0706,
+   "checkpoint": null
+  },
+  "crosslinear": {
+   "mse_normalized": 0.05692,
+   "checkpoint": null
+  },
+  "tide": {
+   "mse_normalized": 0.0656,
+   "checkpoint": null
+  },
+  "timexer": {
+   "mse_normalized": 0.1105,
+   "checkpoint": null
+  },
+  "timemixer": {
+   "mse_normalized": 0.0375,
+   "checkpoint": null
+  },
+  "patchtst": {
+   "mse_normalized": 0.10281,
+   "checkpoint": null
+  },
+  "dlinear": {
+   "mse_normalized": 0.1455,
+   "checkpoint": null
+  },
+  "persistence": {
+   "mse_normalized": 0.1744,
+   "checkpoint": null
+  }
  }
 }

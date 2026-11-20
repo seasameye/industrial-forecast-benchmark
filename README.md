@@ -11,6 +11,9 @@ Anonymous code, data, and trained checkpoints for review.
 - `checkpoints_full.zip` (release asset) the remaining seven model families
   (KITE, DAG, CrossLinear, TimeXer, TiDE, TimeMixer, PatchTST). Unzip it into the
   repository root to enable all 66 entries.
+- `checkpoints/tokamark_task_2-1/` configuration records for the TokaMark column
+  (no checkpoints are released for TokaMark), and `configs/tokamark_runs.json`
+  the matching run list.
 - `table2.json` the reported main-table values (normalized MSE) per entry.
 - `icb/` models, adapters, protocol, and the training entry point.
 - `third_party_repos/DAG/` and `reformer_pytorch.py` vendored dependencies of the
@@ -36,6 +39,29 @@ python -m icb.train --data data/sysid_cascadedtanks.npz --model imamba \
 ```
 (The `--model_config` flag expects a JSON file whose contents are the
 `model_config` object; the checkpoint records it in that form.)
+
+## TokaMark
+
+The TokaMark Task 2--1 column is provided as **configurations only**: the
+checkpoints are not part of this release and the windowed dataset (7.2 GB) is
+not included. `eval_main_table.py` therefore reports these entries as SKIP.
+
+To reproduce the column, build the dataset in the form of the other NPZ files
+(same keys and metadata) and train each model with
+`configs/tokamark_runs.json`:
+
+```bash
+python -m icb.train --data data/tokamark_task_2-1.npz --model imamba \
+    --model_config <(python -c "import json;print(json.dumps(json.load(open('checkpoints/tokamark_task_2-1/imamba.json'))['model_config']))") \
+    --epochs 100 --bs 256 --lr 1e-3 --seed 0 --device cuda --out_dir runs
+```
+
+Notes for this dataset:
+- iMamba uses $d=96$, $N=16$, dropout $0.05$ (Supplementary Table S3);
+- iMamba and LSTM use batch size 256;
+- the horizon is $H=100>L=20$, so the general-purpose adapters
+  (TimeMixer, PatchTST, DLinear) consume the first 20 future-control steps,
+  as described in Supplementary Section S-II-B.
 
 ## Notes
 - All entries are a single run with seed 0.
