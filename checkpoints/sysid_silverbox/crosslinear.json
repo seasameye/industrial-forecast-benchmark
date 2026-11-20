@@ -1,0 +1,32 @@
+{
+ "model": "crosslinear",
+ "dataset": "sysid_silverbox",
+ "checkpoint": "checkpoints/sysid_silverbox/crosslinear.pt",
+ "model_config": {
+  "exo_mode": "future_as_channels",
+  "d_model": 128,
+  "d_ff": 256,
+  "patch_len": 4,
+  "e_layers": 1,
+  "dropout": 0.1
+ },
+ "training_config": {
+  "epochs": 40,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs_parallel2_seed0/sysid_seed0/silverbox_crosslinear_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.08329716324806213,
+  "mae_normalized": 0.1890118271112442
+ },
+ "table_entry": {
+  "mse_normalized": 0.0833
+ }
+}

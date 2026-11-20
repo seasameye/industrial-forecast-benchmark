@@ -1,0 +1,29 @@
+{
+ "model": "dlinear",
+ "dataset": "pmsm_l60_h60",
+ "checkpoint": "checkpoints/pmsm_l60_h60/dlinear.pt",
+ "model_config": {
+  "exo_mode": "future_as_channels",
+  "moving_avg": 25,
+  "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+ },
+ "training_config": {
+  "epochs": 40,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs/future_ch/fc_pmsm_dlinear.json",
+ "reproduced": {
+  "mse_normalized": 0.001239340752363205,
+  "mae_normalized": 0.018068693578243256
+ },
+ "table_entry": {
+  "mse_normalized": 0.00124
+ }
+}

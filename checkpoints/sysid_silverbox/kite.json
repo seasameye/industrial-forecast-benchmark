@@ -1,0 +1,36 @@
+{
+ "model": "kite",
+ "dataset": "sysid_silverbox",
+ "checkpoint": "checkpoints/sysid_silverbox/kite.pt",
+ "model_config": {
+  "flow_dim": 256,
+  "flow_depth": 2,
+  "flow_head": 4,
+  "sampling_steps": 10,
+  "inference_samples": 8,
+  "omega": 1.0,
+  "p_uncond": 0.1,
+  "noise_dropout": 0.1,
+  "rank": 8,
+  "mlp_ratio": 4.0
+ },
+ "training_config": {
+  "epochs": 40,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs_parallel2_seed0/sysid_seed0/silverbox_kite_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.04988430067896843,
+  "mae_normalized": 0.13152214884757996
+ },
+ "table_entry": {
+  "mse_normalized": 0.04988
+ }
+}

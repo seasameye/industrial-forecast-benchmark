@@ -1,0 +1,25 @@
+{
+ "model": "persistence",
+ "dataset": "sysid_wienerhammer",
+ "checkpoint": "checkpoints/sysid_wienerhammer/persistence.pt",
+ "model_config": {},
+ "training_config": {
+  "epochs": 40,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs_parallel2_seed0/sysid_seed0/wienerhammer_persistence_seed0.json",
+ "reproduced": {
+  "mse_normalized": 1.7728941440582275,
+  "mae_normalized": 1.034829020500183
+ },
+ "table_entry": {
+  "mse_normalized": 1.77289
+ }
+}

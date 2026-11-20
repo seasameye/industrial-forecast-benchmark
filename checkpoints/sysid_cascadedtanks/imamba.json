@@ -1,0 +1,30 @@
+{
+ "model": "imamba",
+ "dataset": "sysid_cascadedtanks",
+ "checkpoint": "checkpoints/sysid_cascadedtanks/imamba.pt",
+ "model_config": {
+  "d_model": 64,
+  "n_state": 8,
+  "n_layers": 2,
+  "dropout": 0.0
+ },
+ "training_config": {
+  "epochs": 40,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs/sample_efficiency_ct/ct_imamba_frac100_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.14249815046787262,
+  "mae_normalized": 0.26748570799827576
+ },
+ "table_entry": {
+  "mse_normalized": 0.1425
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "model": "timemixer",
+ "dataset": "nppad_sgtr_l60_h60",
+ "checkpoint": "checkpoints/nppad_sgtr_l60_h60/timemixer.pt",
+ "model_config": {
+  "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library",
+  "exo_mode": "future_as_channels",
+  "d_model": 128,
+  "d_ff": 256,
+  "e_layers": 2,
+  "channel_independence": 0,
+  "down_sampling_layers": 2,
+  "dropout": 0.1
+ },
+ "training_config": {
+  "epochs": 80,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 16,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs_rerun_seed0/nppad/nppad_timemixer_ep80_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.040200475603342056,
+  "mae_normalized": 0.05023648962378502
+ },
+ "table_entry": {
+  "mse_normalized": 0.0402
+ }
+}

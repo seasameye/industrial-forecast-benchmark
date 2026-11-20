@@ -1,0 +1,33 @@
+{
+ "model": "tide",
+ "dataset": "sysid_wienerhammer",
+ "checkpoint": "checkpoints/sysid_wienerhammer/tide.pt",
+ "model_config": {
+  "exo_mode": "native",
+  "d_model": 256,
+  "d_ff": 256,
+  "e_layers": 2,
+  "d_layers": 1,
+  "c_out_native": 16,
+  "dropout": 0.1
+ },
+ "training_config": {
+  "epochs": 80,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 16,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs_tide_fixed_cuda/wienerhammer_tide_ep80_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.30967119336128235,
+  "mae_normalized": 0.4244248867034912
+ },
+ "table_entry": {
+  "mse_normalized": 0.30967
+ }
+}

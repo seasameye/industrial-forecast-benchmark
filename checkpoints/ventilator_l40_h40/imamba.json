@@ -1,0 +1,30 @@
+{
+ "model": "imamba",
+ "dataset": "ventilator_l40_h40",
+ "checkpoint": "checkpoints/ventilator_l40_h40/imamba.pt",
+ "model_config": {
+  "d_model": 64,
+  "n_state": 8,
+  "n_layers": 2,
+  "dropout": 0.0
+ },
+ "training_config": {
+  "epochs": 40,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs/ventilator_seed0/ven_ventilator_l40_h40_imamba_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.0010157825890928507,
+  "mae_normalized": 0.019365308806300163
+ },
+ "table_entry": {
+  "mse_normalized": 0.00102
+ }
+}

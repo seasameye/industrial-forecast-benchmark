@@ -1,0 +1,32 @@
+{
+ "model": "tide",
+ "dataset": "pmsm_l60_h60",
+ "checkpoint": "checkpoints/pmsm_l60_h60/tide.pt",
+ "model_config": {
+  "exo_mode": "native",
+  "d_model": 128,
+  "d_ff": 256,
+  "e_layers": 1,
+  "d_layers": 1,
+  "dropout": 0.1
+ },
+ "training_config": {
+  "epochs": 40,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs_tide_fixed_cuda/pmsm_l60_h60_tide_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.0007675071246922016,
+  "mae_normalized": 0.014561662450432777
+ },
+ "table_entry": {
+  "mse_normalized": 0.00077
+ }
+}

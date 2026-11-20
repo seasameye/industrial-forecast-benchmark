@@ -1,0 +1,31 @@
+{
+ "model": "crosslinear",
+ "dataset": "nppad_sgtr_l60_h60",
+ "checkpoint": "checkpoints/nppad_sgtr_l60_h60/crosslinear.pt",
+ "model_config": {
+  "exo_mode": "future_as_channels",
+  "d_model": 128,
+  "d_ff": 256,
+  "e_layers": 1,
+  "dropout": 0.1
+ },
+ "training_config": {
+  "epochs": 80,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 16,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs/sample_efficiency_nppad_ven/nppad_crosslinear_frac100_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.18051551282405853,
+  "mae_normalized": 0.09535365551710129
+ },
+ "table_entry": {
+  "mse_normalized": 0.18052
+ }
+}

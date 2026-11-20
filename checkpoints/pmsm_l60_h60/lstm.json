@@ -1,0 +1,29 @@
+{
+ "model": "lstm",
+ "dataset": "pmsm_l60_h60",
+ "checkpoint": "checkpoints/pmsm_l60_h60/lstm.best.pt",
+ "model_config": {
+  "hidden": 256,
+  "layers": 3,
+  "dropout": 0.0
+ },
+ "training_config": {
+  "epochs": 60,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 15,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs/pmsm_lstm_tune/pmsm_lstm_h256_l3_do0.json",
+ "reproduced": {
+  "mse_normalized": 0.0003548139939084649,
+  "mae_normalized": 0.013789055868983269
+ },
+ "table_entry": {
+  "mse_normalized": 0.00036
+ }
+}

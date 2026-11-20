@@ -1,0 +1,36 @@
+{
+ "model": "kite",
+ "dataset": "nppad_sgtr_l60_h60",
+ "checkpoint": "checkpoints/nppad_sgtr_l60_h60/kite.pt",
+ "model_config": {
+  "flow_dim": 256,
+  "flow_depth": 2,
+  "flow_head": 4,
+  "sampling_steps": 10,
+  "inference_samples": 8,
+  "omega": 1.0,
+  "p_uncond": 0.1,
+  "noise_dropout": 0.1,
+  "rank": 8,
+  "mlp_ratio": 4.0
+ },
+ "training_config": {
+  "epochs": 100,
+  "batch_size": 32,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.001,
+  "patience": 20,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs_rerun8/nppad_sgtr_l60_h60_kite_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.403463214635849,
+  "mae_normalized": 0.22377672791481018
+ },
+ "table_entry": {
+  "mse_normalized": 0.40346
+ }
+}

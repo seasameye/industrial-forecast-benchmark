@@ -1,0 +1,34 @@
+{
+ "model": "timexer",
+ "dataset": "sysid_wienerhammer",
+ "checkpoint": "checkpoints/sysid_wienerhammer/timexer.pt",
+ "model_config": {
+  "repo": "third_party_repos/DAG",
+  "exo_mode": "native",
+  "d_model": 256,
+  "d_ff": 512,
+  "e_layers": 2,
+  "n_heads": 8,
+  "patch_len": 4,
+  "dropout": 0.1
+ },
+ "training_config": {
+  "epochs": 40,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "gradient_clip": 1.0,
+  "lambda_id": 0.0,
+  "revin": false,
+  "train_frac": 1.0
+ },
+ "source_run": "runs_parallel2_seed0/sysid_seed0/wienerhammer_timexer_seed0.json",
+ "reproduced": {
+  "mse_normalized": 0.04550616443157196,
+  "mae_normalized": 0.15413235127925873
+ },
+ "table_entry": {
+  "mse_normalized": 0.04551
+ }
+}
