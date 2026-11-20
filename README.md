@@ -1,14 +1,21 @@
 # Industrial Forecasting Benchmark with Known Future Inputs
 
-This repository contains the data, configurations, and code behind the main table
-of the paper. It covers seven industrial forecasting tasks (NPPAD, Ventilator,
-PMSM, Cascaded Tanks, Wiener–Hammerstein, Silverbox, and TokaMark Task 2–1),
-each with historical targets, historical exogenous inputs, and a known future
-control path, together with eleven forecasting models (iMamba, LSTM, KITE, DAG,
-CrossLinear, TiDE, TimeXer, TimeMixer, PatchTST, DLinear, Persistence).
-
-Every "dataset × model" entry is stored in `configs/main_table_runs.json` with its
+Industrial forecasters often receive an input trajectory specified before
+prediction, such as a pump-voltage schedule or a sequence of valve commands. A
+model of the resulting system response should preserve prefix consistency:
+changing a later action must not change predictions before that action. This
+repository provides the data, configurations, and code for evaluating that
+setting on seven industrial datasets (NPPAD, Ventilator, PMSM, Cascaded Tanks,
+Wiener–Hammerstein, Silverbox, and TokaMark Task 2–1) with eleven forecasting
+models (iMamba, LSTM, KITE, DAG, CrossLinear, TiDE, TimeXer, TimeMixer,
+PatchTST, DLinear, Persistence). Each dataset supplies historical targets,
+historical exogenous inputs, and a known future control path; every
+dataset–model entry is recorded in `configs/main_table_runs.json` with its
 model configuration, training hyperparameters, and reported value.
+
+The evaluation is limited to forecasting under supplied future inputs;
+generalization to changed input policies and performance in closed-loop control
+are outside its scope.
 
 ## Getting started
 
