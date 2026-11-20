@@ -79,7 +79,8 @@ def main():
 
     print("\n%d/%d evaluated entries match the table." % (n_ok, len(rows)))
     if skipped:
-        print("%d entries skipped (download checkpoints_full.zip to include them)." % skipped)
+        print("%d entries skipped: checkpoints in checkpoints_full.zip, or "
+              "config-only datasets (TokaMark)." % skipped)
     for (ds, mdl), why in ROUNDING.items():
         print("note: %s/%s %s" % (ds, mdl, why))
     if rows and n_ok != len(rows):

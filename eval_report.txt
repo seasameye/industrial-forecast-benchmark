@@ -64,6 +64,18 @@ sysid_silverbox/timemixer                  mse_norm=0.064594 (table 0.06459, rel
 sysid_silverbox/patchtst                   mse_norm=0.680671 (table 0.68067, rel 9.1e-07) OK
 sysid_silverbox/dlinear                    mse_norm=0.673405 (table 0.6734, rel 6.9e-06) OK
 sysid_silverbox/persistence                mse_norm=1.72935 (table 1.72935, rel 1.8e-06) OK
+tokamark_task_2-1/imamba                   SKIP (data not included in this release)
+tokamark_task_2-1/lstm                     SKIP (data not included in this release)
+tokamark_task_2-1/kite                     SKIP (data not included in this release)
+tokamark_task_2-1/dag                      SKIP (data not included in this release)
+tokamark_task_2-1/crosslinear              SKIP (data not included in this release)
+tokamark_task_2-1/tide                     SKIP (data not included in this release)
+tokamark_task_2-1/timexer                  SKIP (data not included in this release)
+tokamark_task_2-1/timemixer                SKIP (data not included in this release)
+tokamark_task_2-1/patchtst                 SKIP (data not included in this release)
+tokamark_task_2-1/dlinear                  SKIP (data not included in this release)
+tokamark_task_2-1/persistence              SKIP (data not included in this release)
 
-66/66 entries match the table.
+66/66 evaluated entries match the table.
+11 entries skipped: checkpoints in checkpoints_full.zip, or config-only datasets (TokaMark).
 note: pmsm_l60_h60/lstm table 0.00036, checkpoint 0.000355
