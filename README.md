@@ -20,13 +20,13 @@ Install the dependencies:
 pip install -r requirements.txt
 ```
 
-Train a model on a dataset:
+Train a model on a dataset (weights and metrics are written to `runs/`):
 
 ```bash
 python train_main_table.py --dataset sysid_cascadedtanks --model lstm --device cuda
 ```
 
-Evaluate a trained model:
+Evaluate the trained models against the reported values:
 
 ```bash
 python eval_main_table.py --device cuda

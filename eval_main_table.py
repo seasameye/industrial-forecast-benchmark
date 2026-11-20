@@ -15,13 +15,27 @@ ROOT = Path(__file__).resolve().parent
 ROUNDING = {("pmsm_l60_h60", "lstm"): "table 0.00036, checkpoint 0.000355"}
 
 
-def build_and_load(rec, data, device):
+def resolve_checkpoint(rec, ckpt_dir):
+    """Return the checkpoint for an entry, falling back to a trained run."""
+    candidates = []
+    if rec.get("checkpoint"):
+        candidates.append(ROOT / rec["checkpoint"])
+    name = f"{rec['dataset']}_{rec['model']}_seed0.best.pt"
+    candidates.append(Path(ckpt_dir) / name)
+    candidates.append(ROOT / "runs" / name)
+    for c in candidates:
+        if c.exists():
+            return c
+    return None
+
+
+def build_and_load(rec, data, device, ckpt):
     y = data["test"]["y_hist"]
     d_y, L = int(y.shape[-1]), int(y.shape[1])
     d_u = int(data["test"]["u_hist"].shape[-1])
     H = int(data["test"]["y_future"].shape[1])
     model = build_model(rec["model"], d_y, d_u, L, H, **rec["model_config"]).to(device)
-    state = torch.load(ROOT / rec["checkpoint"], map_location=device)
+    state = torch.load(ckpt, map_location=device)
     model.load_state_dict(state)
     model.eval()
     return model
@@ -31,14 +45,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     ap.add_argument("--only", default=None, help="substring filter on dataset/model")
+    ap.add_argument("--ckpt-dir", default="checkpoints",
+                    help="directory with <dataset>_<model>_seed0.best.pt files")
     args = ap.parse_args()
 
     runs = json.loads((ROOT / "configs" / "main_table_runs.json").read_text())
 
-    if not (ROOT / "checkpoints").exists():
-        print("note: no checkpoints/ directory in this release -- every entry will be "
-              "skipped.  Download the released checkpoints or train them with "
-              "train_main_table.py (see README).\n")
+    if not (ROOT / "checkpoints").exists() and not (ROOT / "runs").exists():
+        print("note: no checkpoints found.  Train an entry first, e.g.\n"
+              "  python train_main_table.py --dataset sysid_cascadedtanks --model lstm "
+              "--device cuda\n")
     rows, n_ok, skipped = [], 0, 0
     cache = {}
     for rec in runs:
@@ -48,8 +64,9 @@ def main():
             tag = f"{ds}/{mdl}"
             if args.only and args.only not in tag:
                 continue
-            if not rec.get("checkpoint"):
-                print("%-42s SKIP (config only, no checkpoint released)" % tag, flush=True)
+            ckpt = resolve_checkpoint(rec, args.ckpt_dir)
+            if ckpt is None:
+                print("%-42s SKIP (no checkpoint; train it first)" % tag, flush=True)
                 skipped += 1
                 continue
             if ds not in cache:
@@ -64,13 +81,8 @@ def main():
             if data is None:
                 skipped += 1
                 continue
-            if not (ROOT / rec["checkpoint"]).exists():
-                print("%-42s SKIP (no checkpoint in this release)" % tag, flush=True)
-                skipped += 1
-                continue
-
             torch.manual_seed(0)
-            model = build_and_load(rec, data, args.device)
+            model = build_and_load(rec, data, args.device, ckpt)
             m = evaluate(model, data["test"])
             want = entry.get("mse_normalized")
             got = m["mse_normalized"]
