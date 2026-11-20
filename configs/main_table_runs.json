@@ -441,7 +441,7 @@
    "revin": false,
    "train_frac": 1.0
   },
-  "checkpoint": "checkpoints/pmsm_l60_h60/lstm.best.pt",
+  "checkpoint": "checkpoints/pmsm_l60_h60/lstm.pt",
   "table_entry": {
    "mse_normalized": 0.00036
   }
