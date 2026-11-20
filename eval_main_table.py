@@ -15,13 +15,13 @@ ROOT = Path(__file__).resolve().parent
 ROUNDING = {("pmsm_l60_h60", "lstm"): "table 0.00036, checkpoint 0.000355"}
 
 
-def build_and_load(meta, data, device):
+def build_and_load(rec, data, device):
     y = data["test"]["y_hist"]
     d_y, L = int(y.shape[-1]), int(y.shape[1])
     d_u = int(data["test"]["u_hist"].shape[-1])
     H = int(data["test"]["y_future"].shape[1])
-    model = build_model(meta["model"], d_y, d_u, L, H, **meta["model_config"]).to(device)
-    state = torch.load(ROOT / meta["checkpoint"], map_location=device)
+    model = build_model(rec["model"], d_y, d_u, L, H, **rec["model_config"]).to(device)
+    state = torch.load(ROOT / rec["checkpoint"], map_location=device)
     model.load_state_dict(state)
     model.eval()
     return model
@@ -34,12 +34,20 @@ def main():
     args = ap.parse_args()
 
     table = json.loads((ROOT / "table2.json").read_text())
+    runs = json.loads((ROOT / "configs" / "main_table_runs.json").read_text())
+    index = {(r["dataset"], r["model"]): r for r in runs}
+
     rows, n_ok, skipped = [], 0, 0
     cache = {}
     for ds, models in table.items():
         for mdl, entry in models.items():
             tag = f"{ds}/{mdl}"
             if args.only and args.only not in tag:
+                continue
+            rec = index.get((ds, mdl))
+            if rec is None or not rec.get("checkpoint"):
+                print("%-42s SKIP (config only, no checkpoint released)" % tag, flush=True)
+                skipped += 1
                 continue
             if ds not in cache:
                 npz = ROOT / "data" / f"{ds}.npz"
@@ -50,30 +58,28 @@ def main():
                 raw, stats, _ = load_npz(str(npz), device=args.device)
                 cache[ds] = normalize_all(raw, stats)
             data = cache.get(ds)
-            meta_path = ROOT / "checkpoints" / ds / f"{mdl}.json"
-            if not meta_path.exists():
-                print("%-42s SKIP (config-only dataset)" % tag, flush=True)
+            if data is None:
                 skipped += 1
                 continue
-            meta = json.loads(meta_path.read_text())
-            if not meta.get("checkpoint") or not (ROOT / meta["checkpoint"]).exists():
+            if not (ROOT / rec["checkpoint"]).exists():
                 print("%-42s SKIP (checkpoint in checkpoints_full.zip)" % tag, flush=True)
                 skipped += 1
                 continue
+
             torch.manual_seed(0)
-            model = build_and_load(meta, data, args.device)
+            model = build_and_load(rec, data, args.device)
             m = evaluate(model, data["test"])
             want = entry["mse_normalized"]
             got = m["mse_normalized"]
             rel = abs(got - want) / max(abs(want), 1e-12)
-            # KITE draws Monte-Carlo samples at inference time, so it is judged
-            # with a looser tolerance; the other models are deterministic.
+            # KITE draws Monte-Carlo samples at inference time; the other models
+            # are deterministic.  TokaMark aside, the table prints five decimals.
             tol = 1e-2 if mdl == "kite" else 2e-3
             if (ds, mdl) in ROUNDING:
                 tol = 2e-2
             ok = (round(got, 5) == round(want, 5)) or rel < tol
             n_ok += ok
-            rows.append((tag, got, m["mae_normalized"], want, rel, ok))
+            rows.append((tag, got, want, rel, ok))
             print("%-42s mse_norm=%.6g (table %.6g, rel %.1e) %s"
                   % (tag, got, want, rel, "OK" if ok else "MISMATCH"), flush=True)
 
@@ -85,7 +91,7 @@ def main():
         print("note: %s/%s %s" % (ds, mdl, why))
     if rows and n_ok != len(rows):
         print("Mismatching entries:")
-        for tag, got, mae, want, rel, ok in rows:
+        for tag, got, want, rel, ok in rows:
             if not ok:
                 print("  %-42s %.6g vs %.6g" % (tag, got, want))
 

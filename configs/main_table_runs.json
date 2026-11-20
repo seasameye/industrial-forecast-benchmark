@@ -1,0 +1,2030 @@
+[
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "crosslinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 16,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/crosslinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.18052
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "dag",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 2,
+   "n_heads": 4,
+   "patch_len": 16,
+   "stride": 8,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG"
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 15,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/dag.pt",
+  "table_entry": {
+   "mse_normalized": 0.08044
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "dlinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "moving_avg": 25,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/dlinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.31293
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "imamba",
+  "model_config": {
+   "d_model": 64,
+   "n_state": 8,
+   "n_layers": 2,
+   "dropout": 0.0
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/imamba.pt",
+  "table_entry": {
+   "mse_normalized": 0.01159
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "kite",
+  "model_config": {
+   "flow_dim": 256,
+   "flow_depth": 2,
+   "flow_head": 4,
+   "sampling_steps": 10,
+   "inference_samples": 8,
+   "omega": 1.0,
+   "p_uncond": 0.1,
+   "noise_dropout": 0.1,
+   "rank": 8,
+   "mlp_ratio": 4.0
+  },
+  "training_config": {
+   "epochs": 100,
+   "batch_size": 32,
+   "learning_rate": 0.0003,
+   "weight_decay": 0.001,
+   "patience": 20,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/kite.pt",
+  "table_entry": {
+   "mse_normalized": 0.40346
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "lstm",
+  "model_config": {
+   "hidden": 128,
+   "layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/lstm.pt",
+  "table_entry": {
+   "mse_normalized": 0.01452
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "patchtst",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "n_heads": 4,
+   "patch_len": 16,
+   "stride": 2,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/patchtst.pt",
+  "table_entry": {
+   "mse_normalized": 0.25232
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "persistence",
+  "model_config": {},
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/persistence.pt",
+  "table_entry": {
+   "mse_normalized": 0.31983
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "tide",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 256,
+   "e_layers": 2,
+   "d_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/tide.pt",
+  "table_entry": {
+   "mse_normalized": 0.24214
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "timemixer",
+  "model_config": {
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library",
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 2,
+   "channel_independence": 0,
+   "down_sampling_layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 16,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/timemixer.pt",
+  "table_entry": {
+   "mse_normalized": 0.0402
+  }
+ },
+ {
+  "dataset": "nppad_sgtr_l60_h60",
+  "model": "timexer",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 512,
+   "e_layers": 2,
+   "n_heads": 4,
+   "patch_len": 4,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/nppad_sgtr_l60_h60/timexer.pt",
+  "table_entry": {
+   "mse_normalized": 0.19662
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "crosslinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 64,
+   "d_ff": 128,
+   "e_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/crosslinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.00081
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "dag",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "n_heads": 4,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.0005,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/dag.pt",
+  "table_entry": {
+   "mse_normalized": 0.00191
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "dlinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "moving_avg": 25,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/dlinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.00124
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "imamba",
+  "model_config": {
+   "d_model": 64,
+   "n_state": 8,
+   "n_layers": 2,
+   "dropout": 0.0
+  },
+  "training_config": {
+   "epochs": 60,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 15,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/imamba.pt",
+  "table_entry": {
+   "mse_normalized": 0.00028
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "kite",
+  "model_config": {
+   "flow_dim": 256,
+   "flow_depth": 2,
+   "flow_head": 4,
+   "sampling_steps": 10,
+   "inference_samples": 8
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.0005,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/kite.pt",
+  "table_entry": {
+   "mse_normalized": 0.00116
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "lstm",
+  "model_config": {
+   "hidden": 256,
+   "layers": 3,
+   "dropout": 0.0
+  },
+  "training_config": {
+   "epochs": 60,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 15,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/lstm.best.pt",
+  "table_entry": {
+   "mse_normalized": 0.00036
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "patchtst",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 64,
+   "d_ff": 128,
+   "e_layers": 1,
+   "n_heads": 4,
+   "patch_len": 16,
+   "stride": 2,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/patchtst.pt",
+  "table_entry": {
+   "mse_normalized": 0.00109
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "persistence",
+  "model_config": {},
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/persistence.pt",
+  "table_entry": {
+   "mse_normalized": 0.00192
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "tide",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "d_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/tide.pt",
+  "table_entry": {
+   "mse_normalized": 0.00077
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "timemixer",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 64,
+   "d_ff": 128,
+   "e_layers": 1,
+   "down_sampling_layers": 2,
+   "dropout": 0.1,
+   "channel_independence": 0,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.0003,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/timemixer.pt",
+  "table_entry": {
+   "mse_normalized": 0.00084
+  }
+ },
+ {
+  "dataset": "pmsm_l60_h60",
+  "model": "timexer",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "n_heads": 4,
+   "patch_len": 4,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.0005,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/pmsm_l60_h60/timexer.pt",
+  "table_entry": {
+   "mse_normalized": 0.00082
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "crosslinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "patch_len": 4,
+   "e_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/crosslinear.pt",
+  "table_entry": {
+   "mse_normalized": 1.03801
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "dag",
+  "model_config": {
+   "model_name": "DAG",
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 512,
+   "e_layers": 2,
+   "n_heads": 8,
+   "dropout": 0.1,
+   "loss": "MSE"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/dag.pt",
+  "table_entry": {
+   "mse_normalized": 0.64915
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "dlinear",
+  "model_config": {
+   "exo_mode": "hist",
+   "d_model": 128,
+   "d_ff": 256,
+   "moving_avg": 25,
+   "individual": false,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 16,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/dlinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.9132
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "imamba",
+  "model_config": {
+   "d_model": 64,
+   "n_state": 8,
+   "n_layers": 2,
+   "dropout": 0.0
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/imamba.pt",
+  "table_entry": {
+   "mse_normalized": 0.1425
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "kite",
+  "model_config": {
+   "flow_dim": 256,
+   "flow_depth": 2,
+   "flow_head": 4,
+   "sampling_steps": 10,
+   "inference_samples": 8,
+   "omega": 1.0,
+   "p_uncond": 0.1,
+   "noise_dropout": 0.1,
+   "rank": 8,
+   "mlp_ratio": 4.0
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/kite.pt",
+  "table_entry": {
+   "mse_normalized": 0.91549
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "lstm",
+  "model_config": {
+   "hidden": 128,
+   "layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/lstm.pt",
+  "table_entry": {
+   "mse_normalized": 0.19178
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "patchtst",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "patch_len": 16,
+   "stride": 2,
+   "e_layers": 1,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/patchtst.pt",
+  "table_entry": {
+   "mse_normalized": 1.05596
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "persistence",
+  "model_config": {},
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/persistence.pt",
+  "table_entry": {
+   "mse_normalized": 1.05066
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "tide",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 256,
+   "e_layers": 2,
+   "d_layers": 1,
+   "c_out_native": 16,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/tide.pt",
+  "table_entry": {
+   "mse_normalized": 0.86172
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "timemixer",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "channel_independence": 0,
+   "down_sampling_window": 2,
+   "down_sampling_layers": 2,
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/timemixer.pt",
+  "table_entry": {
+   "mse_normalized": 0.98358
+  }
+ },
+ {
+  "dataset": "sysid_cascadedtanks",
+  "model": "timexer",
+  "model_config": {
+   "repo": "third_party_repos/DAG",
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 512,
+   "e_layers": 2,
+   "n_heads": 8,
+   "patch_len": 4,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_cascadedtanks/timexer.pt",
+  "table_entry": {
+   "mse_normalized": 0.70723
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "crosslinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "patch_len": 4,
+   "e_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/crosslinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.0833
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "dag",
+  "model_config": {
+   "model_name": "DAG",
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 512,
+   "e_layers": 2,
+   "n_heads": 8,
+   "dropout": 0.1,
+   "loss": "MSE"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/dag.pt",
+  "table_entry": {
+   "mse_normalized": 0.08706
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "dlinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "moving_avg": 25,
+   "individual": false,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/dlinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.6734
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "imamba",
+  "model_config": {
+   "d_model": 128,
+   "n_state": 16,
+   "n_layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 32,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 20,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/imamba.pt",
+  "table_entry": {
+   "mse_normalized": 0.00259
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "kite",
+  "model_config": {
+   "flow_dim": 256,
+   "flow_depth": 2,
+   "flow_head": 4,
+   "sampling_steps": 10,
+   "inference_samples": 8,
+   "omega": 1.0,
+   "p_uncond": 0.1,
+   "noise_dropout": 0.1,
+   "rank": 8,
+   "mlp_ratio": 4.0
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/kite.pt",
+  "table_entry": {
+   "mse_normalized": 0.04988
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "lstm",
+  "model_config": {
+   "hidden": 128,
+   "layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 150,
+   "batch_size": 64,
+   "learning_rate": 0.0003,
+   "weight_decay": 0.0001,
+   "patience": 20,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/lstm.pt",
+  "table_entry": {
+   "mse_normalized": 0.00068
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "patchtst",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "patch_len": 16,
+   "stride": 2,
+   "e_layers": 1,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 150,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 20,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/patchtst.pt",
+  "table_entry": {
+   "mse_normalized": 0.68067
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "persistence",
+  "model_config": {},
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/persistence.pt",
+  "table_entry": {
+   "mse_normalized": 1.72935
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "tide",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 256,
+   "e_layers": 2,
+   "d_layers": 1,
+   "c_out_native": 16,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/tide.pt",
+  "table_entry": {
+   "mse_normalized": 0.68935
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "timemixer",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "channel_independence": 0,
+   "down_sampling_window": 2,
+   "down_sampling_layers": 2,
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/timemixer.pt",
+  "table_entry": {
+   "mse_normalized": 0.06459
+  }
+ },
+ {
+  "dataset": "sysid_silverbox",
+  "model": "timexer",
+  "model_config": {
+   "repo": "third_party_repos/DAG",
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 512,
+   "e_layers": 2,
+   "n_heads": 8,
+   "patch_len": 4,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_silverbox/timexer.pt",
+  "table_entry": {
+   "mse_normalized": 0.04733
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "crosslinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "patch_len": 4,
+   "e_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/crosslinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.30605
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "dag",
+  "model_config": {
+   "model_name": "DAG",
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 512,
+   "e_layers": 2,
+   "n_heads": 8,
+   "dropout": 0.1,
+   "loss": "MSE"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/dag.pt",
+  "table_entry": {
+   "mse_normalized": 0.23346
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "dlinear",
+  "model_config": {
+   "exo_mode": "hist",
+   "d_model": 128,
+   "d_ff": 256,
+   "moving_avg": 25,
+   "individual": false,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 16,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/dlinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.83313
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "imamba",
+  "model_config": {
+   "d_model": 64,
+   "n_state": 8,
+   "n_layers": 2,
+   "dropout": 0.0
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 12,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/imamba.pt",
+  "table_entry": {
+   "mse_normalized": 0.00063
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "kite",
+  "model_config": {
+   "flow_dim": 256,
+   "flow_depth": 2,
+   "flow_head": 4,
+   "sampling_steps": 10,
+   "inference_samples": 8,
+   "omega": 1.0,
+   "p_uncond": 0.1,
+   "noise_dropout": 0.1,
+   "rank": 8,
+   "mlp_ratio": 4.0
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/kite.pt",
+  "table_entry": {
+   "mse_normalized": 0.05866
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "lstm",
+  "model_config": {
+   "hidden": 128,
+   "layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 100,
+   "batch_size": 64,
+   "learning_rate": 0.0003,
+   "weight_decay": 0.0001,
+   "patience": 20,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/lstm.pt",
+  "table_entry": {
+   "mse_normalized": 6e-05
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "patchtst",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "patch_len": 16,
+   "stride": 2,
+   "e_layers": 1,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 100,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 20,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/patchtst.pt",
+  "table_entry": {
+   "mse_normalized": 1.01183
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "persistence",
+  "model_config": {},
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/persistence.pt",
+  "table_entry": {
+   "mse_normalized": 1.77289
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "tide",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 256,
+   "e_layers": 2,
+   "d_layers": 1,
+   "c_out_native": 16,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 16,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/tide.pt",
+  "table_entry": {
+   "mse_normalized": 0.30967
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "timemixer",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "channel_independence": 0,
+   "down_sampling_window": 2,
+   "down_sampling_layers": 2,
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/timemixer.pt",
+  "table_entry": {
+   "mse_normalized": 0.28343
+  }
+ },
+ {
+  "dataset": "sysid_wienerhammer",
+  "model": "timexer",
+  "model_config": {
+   "repo": "third_party_repos/DAG",
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 512,
+   "e_layers": 2,
+   "n_heads": 8,
+   "patch_len": 4,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/sysid_wienerhammer/timexer.pt",
+  "table_entry": {
+   "mse_normalized": 0.04551
+  }
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "crosslinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "patch_len": 4,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.05692,
+   "mae_normalized": 0.0602
+  },
+  "params": 424824
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "dag",
+  "model_config": {
+   "d_model": 256,
+   "d_ff": 512,
+   "n_heads": 8,
+   "e_layers": 2,
+   "patch_len": 16,
+   "stride": 8,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.0706,
+   "mae_normalized": 0.1018
+  },
+  "params": 4698360
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "dlinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "moving_avg": 25,
+   "individual": false
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.1455,
+   "mae_normalized": 0.1335
+  },
+  "params": 4200,
+  "params_note": "PatchTST and DLinear both concatenate the future control path as input channels (exo_mode=future_as_channels). DLinear is channel-independent with shared weights, so its parameter count does not depend on the number of channels: with L=20 and H=100 it is 4,200, whereas the appendix prints 7,320 (the value obtained for the 60-step datasets)."
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "imamba",
+  "model_config": {
+   "d_model": 96,
+   "n_state": 16,
+   "n_layers": 2,
+   "dropout": 0.05
+  },
+  "training_config": {
+   "batch_size": 256,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.01866,
+   "mae_normalized": 0.04394
+  },
+  "params": 930621
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "kite",
+  "model_config": {
+   "flow_dim": 256,
+   "flow_depth": 2,
+   "flow_head": 4,
+   "rank": 8,
+   "sampling_steps": 10,
+   "inference_samples": 8
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.2953,
+   "mae_normalized": 0.0937
+  },
+  "params": 6270087
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "lstm",
+  "model_config": {
+   "hidden": 128,
+   "layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 256,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.02046,
+   "mae_normalized": 0.04474
+  },
+  "params": 421021
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "patchtst",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "n_heads": 8,
+   "e_layers": 2,
+   "patch_len": 16,
+   "stride": 8,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.10281,
+   "mae_normalized": 0.09026
+  },
+  "params": 292964,
+  "params_note": "PatchTST concatenates the future control path as input channels (exo_mode=future_as_channels) and processes channels independently, so its parameter count does not depend on the number of channels. The stated configuration (d=128, ff=256, 8 heads, 2 layers, patch 16, stride 8) builds to 292,964; no patch/stride/width combination produces the appendix value 261,348."
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "persistence",
+  "model_config": {},
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.1744,
+   "mae_normalized": 0.1062
+  },
+  "params": 0
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "tide",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 256,
+   "e_layers": 2,
+   "d_layers": 1,
+   "c_out_native": 16,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.0656,
+   "mae_normalized": 0.076
+  },
+  "params": 1298522,
+  "params_note": "appendix prints 1,298,524; the stated configuration builds to 1,298,522 (two parameters)."
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "timemixer",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "down_sampling_layers": 2,
+   "down_sampling_window": 2,
+   "moving_avg": 25,
+   "channel_independence": 0,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.0375,
+   "mae_normalized": 0.06077
+  },
+  "params": 162480,
+  "params_note": "appendix text says 2 layers, but its parameter count corresponds to 1 layer."
+ },
+ {
+  "dataset": "tokamark_task_2-1",
+  "model": "timexer",
+  "model_config": {
+   "d_model": 256,
+   "d_ff": 512,
+   "n_heads": 8,
+   "e_layers": 2,
+   "patch_len": 4,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "epochs": null,
+   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
+  },
+  "checkpoint": null,
+  "table_entry": {
+   "mse_normalized": 0.1105,
+   "mae_normalized": 0.0948
+  },
+  "params": 1775204
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "crosslinear",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/crosslinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.00153
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "dag",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 2,
+   "n_heads": 4,
+   "patch_len": 16,
+   "stride": 8,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/dag.pt",
+  "table_entry": {
+   "mse_normalized": 0.00152
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "dlinear",
+  "model_config": {
+   "exo_mode": "hist",
+   "moving_avg": 25,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/dlinear.pt",
+  "table_entry": {
+   "mse_normalized": 0.0042
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "imamba",
+  "model_config": {
+   "d_model": 64,
+   "n_state": 8,
+   "n_layers": 2,
+   "dropout": 0.0
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/imamba.pt",
+  "table_entry": {
+   "mse_normalized": 0.00102
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "kite",
+  "model_config": {
+   "flow_dim": 256,
+   "flow_depth": 2,
+   "flow_head": 4,
+   "sampling_steps": 10,
+   "inference_samples": 8
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/kite.pt",
+  "table_entry": {
+   "mse_normalized": 0.00237
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "lstm",
+  "model_config": {
+   "hidden": 128,
+   "layers": 2,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/lstm.pt",
+  "table_entry": {
+   "mse_normalized": 0.00109
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "patchtst",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 1,
+   "n_heads": 4,
+   "patch_len": 16,
+   "stride": 2,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 80,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 15,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/patchtst.pt",
+  "table_entry": {
+   "mse_normalized": 0.00903
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "persistence",
+  "model_config": {},
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/persistence.pt",
+  "table_entry": {
+   "mse_normalized": 0.04369
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "tide",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 256,
+   "e_layers": 2,
+   "d_layers": 1,
+   "dropout": 0.1
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/tide.pt",
+  "table_entry": {
+   "mse_normalized": 0.00152
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "timemixer",
+  "model_config": {
+   "exo_mode": "future_as_channels",
+   "d_model": 128,
+   "d_ff": 256,
+   "e_layers": 2,
+   "channel_independence": 0,
+   "down_sampling_layers": 2,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/timemixer.pt",
+  "table_entry": {
+   "mse_normalized": 0.00153
+  }
+ },
+ {
+  "dataset": "ventilator_l40_h40",
+  "model": "timexer",
+  "model_config": {
+   "exo_mode": "native",
+   "d_model": 256,
+   "d_ff": 512,
+   "e_layers": 2,
+   "n_heads": 4,
+   "patch_len": 4,
+   "dropout": 0.1,
+   "repo": "third_party_repos/DAG"
+  },
+  "training_config": {
+   "epochs": 40,
+   "batch_size": 64,
+   "learning_rate": 0.001,
+   "weight_decay": 0.0001,
+   "patience": 8,
+   "gradient_clip": 1.0,
+   "lambda_id": 0.0,
+   "revin": false,
+   "train_frac": 1.0
+  },
+  "checkpoint": "checkpoints/ventilator_l40_h40/timexer.pt",
+  "table_entry": {
+   "mse_normalized": 0.00785
+  }
+ }
+]

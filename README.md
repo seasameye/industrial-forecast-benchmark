@@ -5,15 +5,13 @@ Anonymous code, data, and trained checkpoints for review.
 - `data/` windowed NPZ datasets (train/val/test histories and future controls,
   normalization statistics, and window metadata). Window counts match Table I.
 - `checkpoints/<dataset>/<model>.pt` checkpoints for iMamba, LSTM, DLinear, and
-  Persistence (the fast path), each with `<model>.json` recording the model
-  configuration, the training configuration, the source run, and the reproduced
-  metrics. The configuration JSONs for every entry are included regardless.
+  Persistence (the fast path). Every model configuration, training setting, and
+  checkpoint path is recorded in `configs/main_table_runs.json`.
 - `checkpoints_full.zip` (release asset) the remaining seven model families
   (KITE, DAG, CrossLinear, TimeXer, TiDE, TimeMixer, PatchTST). Unzip it into the
   repository root to enable all 66 entries.
-- `checkpoints/tokamark_task_2-1/` configuration records for the TokaMark column
-  (no checkpoints are released for TokaMark), and `configs/tokamark_runs.json`
-  the matching run list.
+- TokaMark entries are listed in `configs/main_table_runs.json` with
+  `"checkpoint": null` (no checkpoints are released for that column).
 - `table2.json` the reported main-table values (normalized MSE) per entry.
 - `icb/` models, adapters, protocol, and the training entry point.
 - `third_party_repos/DAG/` and `reformer_pytorch.py` vendored dependencies of the
@@ -33,8 +31,9 @@ entries whose checkpoint is not present are reported as SKIP.
 
 ## Retrain one entry (optional)
 ```bash
+python -c "import json;print(json.dumps([r for r in json.load(open('configs/main_table_runs.json')) if r['dataset']=='sysid_cascadedtanks' and r['model']=='imamba'][0]['model_config']))" > /tmp/cfg.json
 python -m icb.train --data data/sysid_cascadedtanks.npz --model imamba \
-    --model_config checkpoints/sysid_cascadedtanks/imamba.json \
+    --model_config /tmp/cfg.json \
     --epochs 40 --bs 64 --lr 1e-3 --seed 0 --device cuda --out_dir runs
 ```
 (The `--model_config` flag expects a JSON file whose contents are the
@@ -47,12 +46,12 @@ checkpoints are not part of this release and the windowed dataset (7.2 GB) is
 not included. `eval_main_table.py` therefore reports these entries as SKIP.
 
 To reproduce the column, build the dataset in the form of the other NPZ files
-(same keys and metadata) and train each model with
-`configs/tokamark_runs.json`:
+(same keys and metadata) and train each model with the TokaMark records of
+`configs/main_table_runs.json`:
 
 ```bash
 python -m icb.train --data data/tokamark_task_2-1.npz --model imamba \
-    --model_config <(python -c "import json;print(json.dumps(json.load(open('checkpoints/tokamark_task_2-1/imamba.json'))['model_config']))") \
+    --model_config /tmp/tokamark_imamba.json \
     --epochs 100 --bs 256 --lr 1e-3 --seed 0 --device cuda --out_dir runs
 ```
 
