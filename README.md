@@ -5,9 +5,9 @@ prediction — a pump-voltage schedule, a sequence of valve commands. A model of
 the resulting response should preserve **prefix consistency**: changing a later
 action must not change predictions before that action.
 
-This repository contains the data, configurations, and code for evaluating that
-setting: seven industrial datasets × eleven forecasting models, with every
-dataset–model entry recorded in `configs/main_table_runs.json`.
+This repository provides seven industrial datasets and eleven forecasting models
+under this setting. Each dataset supplies historical targets, historical
+exogenous inputs, and a known future control path.
 
 ## Getting started
 
@@ -17,13 +17,13 @@ Install the dependencies:
 pip install -r requirements.txt
 ```
 
-Train an entry with its recorded configuration:
+Train a model on a dataset:
 
 ```bash
 python train_main_table.py --dataset sysid_cascadedtanks --model imamba --device cuda
 ```
 
-Evaluate against the reported table:
+Evaluate a trained model:
 
 ```bash
 python eval_main_table.py --device cuda
@@ -37,16 +37,14 @@ Select a single entry with `--only <dataset>/<model>` (evaluation) or
 | Path | Contents |
 |---|---|
 | `data/` | windowed NPZ datasets |
-| `configs/main_table_runs.json` | configuration, hyperparameters, and reported value of every entry |
+| `configs/main_table_runs.json` | configurations for each dataset–model pair |
 | `icb/` | models, adapters, evaluation protocol, training entry |
 | `third_party_repos/DAG/` | vendored TSLib code used by six adapters |
 | `reformer_pytorch.py` | vendored dependency of the TSLib attention layers |
-| `train_main_table.py` | trains an entry with its recorded configuration |
-| `eval_main_table.py` | evaluates trained models against the table |
+| `train_main_table.py` | trains a model on a dataset |
+| `eval_main_table.py` | evaluates a trained model |
 
 ## TokaMark
 
-TokaMark Task 2–1 is not included: its windowed dataset is 7.2 GB. It is
-available on request, or can be rebuilt from the original measurements with
-L = 20, H = 100 and 381068 / 44872 / 47363 train/val/test windows, using the
-same NPZ keys as the other datasets.
+TokaMark Task 2–1 is not included because the windowed dataset is 7.2 GB. It is
+available on request from the authors.
