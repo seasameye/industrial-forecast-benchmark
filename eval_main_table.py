@@ -35,6 +35,10 @@ def main():
 
     runs = json.loads((ROOT / "configs" / "main_table_runs.json").read_text())
 
+    if not (ROOT / "checkpoints").exists():
+        print("note: no checkpoints/ directory in this release -- every entry will be "
+              "skipped.  Download the released checkpoints or train them with "
+              "train_main_table.py (see README).\n")
     rows, n_ok, skipped = [], 0, 0
     cache = {}
     for rec in runs:
@@ -61,7 +65,7 @@ def main():
                 skipped += 1
                 continue
             if not (ROOT / rec["checkpoint"]).exists():
-                print("%-42s SKIP (checkpoint in checkpoints_full.zip)" % tag, flush=True)
+                print("%-42s SKIP (no checkpoint in this release)" % tag, flush=True)
                 skipped += 1
                 continue
 
@@ -84,8 +88,7 @@ def main():
 
     print("\n%d/%d evaluated entries match the table." % (n_ok, len(rows)))
     if skipped:
-        print("%d entries skipped: checkpoints in checkpoints_full.zip, or "
-              "config-only datasets (TokaMark)." % skipped)
+        print("%d entries skipped (no checkpoint for this entry)." % skipped)
     for (ds, mdl), why in ROUNDING.items():
         print("note: %s/%s %s" % (ds, mdl, why))
     if rows and n_ok != len(rows):
