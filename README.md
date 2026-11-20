@@ -8,9 +8,9 @@ action must not change predictions before that action.
 This repository provides seven industrial datasets and ten forecasting models
 under this setting. Each dataset supplies historical targets, historical
 exogenous inputs, and the future trajectory of its **control variables** — the
-actuator commands, setpoints, and operating conditions that are fixed before
-prediction (for example a pump-voltage schedule or a sequence of valve
-commands) and that the model must use as a known input over the horizon.
+actuator commands and setpoints that are fixed before prediction (for example a
+pump-voltage schedule or a sequence of valve commands) and that the model must
+use as a known input over the horizon.
 
 ## Getting started
 
