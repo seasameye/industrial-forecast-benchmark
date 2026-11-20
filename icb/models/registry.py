@@ -1,0 +1,140 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
+from typing import Any
+
+from .imamba import IntegralControlMamba
+from .imamba_flat import FlattenedIntegralControlMamba
+from .imamba_masked import MaskedFlattenedIntegralControlMamba
+from .imamba_variants import (ControlIndependentMamba, DirectReadoutMamba,
+                              ZeroControlTransitionMamba)
+from .lstm import LSTMEncDec
+from .official_dag import OfficialDAGAdapter
+from .official_timexer import OfficialTimeXerAdapter
+from .persistence import Persistence
+from .tslib import TSLibAdapter
+
+
+def _default_tsl_repo() -> str:
+    return "third_party_repos/DAG/ts_benchmark/baselines/time_series_library"
+
+
+def available_models() -> list[str]:
+    return [
+        "persistence",
+        "lstm",
+        "imamba",
+        "imamba_flat",
+        "imamba_masked",
+        "imamba_ci_transition",
+        "imamba_direct_readout",
+        "crosslinear",
+        "tide",
+        "timexer",
+        "timemixer",
+        "timemixer_adapter",
+        "patchtst",
+        "dlinear",
+        "dag",
+        "kite",
+    ]
+
+
+def build_model(name: str, d_y: int, d_u: int, L: int, H: int,
+                **kwargs: Any):
+    key = name.lower()
+    if key == "persistence":
+        return Persistence()
+    if key == "lstm":
+        return LSTMEncDec(d_y, d_u, hidden=kwargs.get("hidden", 128),
+                          layers=kwargs.get("layers", 2),
+                          dropout=kwargs.get("dropout", 0.1))
+    if key in ("imamba", "integral_mamba", "integralcontrolmamba"):
+        return IntegralControlMamba(
+            d_y=d_y,
+            d_u=d_u,
+            d_model=kwargs.get("d_model", 64),
+            n_state=kwargs.get("n_state", 8),
+            n_layers=kwargs.get("n_layers", 2),
+            max_horizon=H,
+            dropout=kwargs.get("dropout", 0.0),
+        )
+    if key in ("imamba_ci_transition", "imamba_control_independent",
+               "control_independent_mamba"):
+        return ControlIndependentMamba(
+            d_y=d_y,
+            d_u=d_u,
+            d_model=kwargs.get("d_model", 64),
+            n_state=kwargs.get("n_state", 8),
+            n_layers=kwargs.get("n_layers", 2),
+            max_horizon=H,
+            dropout=kwargs.get("dropout", 0.0),
+        )
+    if key in ("imamba_ci_zero", "zero_control_transition"):
+        return ZeroControlTransitionMamba(
+            d_y=d_y,
+            d_u=d_u,
+            d_model=kwargs.get("d_model", 64),
+            n_state=kwargs.get("n_state", 8),
+            n_layers=kwargs.get("n_layers", 2),
+            max_horizon=H,
+            dropout=kwargs.get("dropout", 0.0),
+        )
+    if key in ("imamba_direct_readout", "direct_readout_mamba"):
+        return DirectReadoutMamba(
+            d_y=d_y,
+            d_u=d_u,
+            d_model=kwargs.get("d_model", 64),
+            n_state=kwargs.get("n_state", 8),
+            n_layers=kwargs.get("n_layers", 2),
+            max_horizon=H,
+            dropout=kwargs.get("dropout", 0.0),
+        )
+    if key in ("imamba_masked", "masked_imamba"):
+        return MaskedFlattenedIntegralControlMamba(
+            d_y=d_y,
+            d_u=d_u,
+            H=H,
+            d_model=kwargs.get("d_model", 64),
+            n_state=kwargs.get("n_state", 8),
+            n_layers=kwargs.get("n_layers", 2),
+            max_horizon=H,
+            dropout=kwargs.get("dropout", 0.0),
+            flat_hidden=kwargs.get("flat_hidden", None),
+        )
+    if key in ("imamba_flat", "flat_imamba", "flattened_imamba"):
+        return FlattenedIntegralControlMamba(
+            d_y=d_y,
+            d_u=d_u,
+            H=H,
+            d_model=kwargs.get("d_model", 64),
+            n_state=kwargs.get("n_state", 8),
+            n_layers=kwargs.get("n_layers", 2),
+            max_horizon=H,
+            dropout=kwargs.get("dropout", 0.0),
+            flat_hidden=kwargs.get("flat_hidden", None),
+        )
+    if key == "crosslinear":
+        return TSLibAdapter("CrossLinear", d_y, d_u, L, H, **kwargs)
+    if key == "tide":
+        return TSLibAdapter("TiDE", d_y, d_u, L, H, **kwargs)
+    if key == "timexer":
+        return OfficialTimeXerAdapter(d_y, d_u, L, H, **kwargs)
+    if key in ("timemixer", "timemixer_adapter"):
+        kwargs.setdefault("channel_independence", 0)
+        kwargs.setdefault("repo", _default_tsl_repo())
+        return TSLibAdapter("TimeMixer", d_y, d_u, L, H, **kwargs)
+    if key == "patchtst":
+        kwargs.setdefault("repo", _default_tsl_repo())
+        kwargs.setdefault("exo_mode", "hist")
+        return TSLibAdapter("PatchTST", d_y, d_u, L, H, **kwargs)
+    if key == "dlinear":
+        kwargs.setdefault("repo", _default_tsl_repo())
+        kwargs.setdefault("exo_mode", "hist")
+        return TSLibAdapter("DLinear", d_y, d_u, L, H, **kwargs)
+    if key == "dag":
+        return OfficialDAGAdapter(d_y, d_u, L, H, **kwargs)
+    if key == "kite":
+        from .kite import KITEOfficialAdapter
+        return KITEOfficialAdapter(d_y, d_u, L, H, **kwargs)
+    raise ValueError(f"unknown model {name}. Available: {available_models()}")

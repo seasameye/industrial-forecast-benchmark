@@ -1,0 +1,6 @@
+"""Model registry exports."""
+
+from .registry import build_model, available_models
+
+__all__ = ["build_model", "available_models"]
+

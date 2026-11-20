@@ -1,0 +1,278 @@
+{
+ "nppad_sgtr_l60_h60": {
+  "imamba": {
+   "mse_normalized": 0.01159,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/imamba.pt"
+  },
+  "lstm": {
+   "mse_normalized": 0.01452,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/lstm.pt"
+  },
+  "kite": {
+   "mse_normalized": 0.40346,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/kite.pt"
+  },
+  "dag": {
+   "mse_normalized": 0.08044,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/dag.pt"
+  },
+  "crosslinear": {
+   "mse_normalized": 0.18052,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/crosslinear.pt"
+  },
+  "timexer": {
+   "mse_normalized": 0.19662,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/timexer.pt"
+  },
+  "tide": {
+   "mse_normalized": 0.24214,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/tide.pt"
+  },
+  "timemixer": {
+   "mse_normalized": 0.0402,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/timemixer.pt"
+  },
+  "patchtst": {
+   "mse_normalized": 0.25232,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/patchtst.pt"
+  },
+  "dlinear": {
+   "mse_normalized": 0.31293,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/dlinear.pt"
+  },
+  "persistence": {
+   "mse_normalized": 0.31983,
+   "checkpoint": "checkpoints/nppad_sgtr_l60_h60/persistence.pt"
+  }
+ },
+ "ventilator_l40_h40": {
+  "imamba": {
+   "mse_normalized": 0.00102,
+   "checkpoint": "checkpoints/ventilator_l40_h40/imamba.pt"
+  },
+  "lstm": {
+   "mse_normalized": 0.00109,
+   "checkpoint": "checkpoints/ventilator_l40_h40/lstm.pt"
+  },
+  "kite": {
+   "mse_normalized": 0.00237,
+   "checkpoint": "checkpoints/ventilator_l40_h40/kite.pt"
+  },
+  "dag": {
+   "mse_normalized": 0.00152,
+   "checkpoint": "checkpoints/ventilator_l40_h40/dag.pt"
+  },
+  "crosslinear": {
+   "mse_normalized": 0.00153,
+   "checkpoint": "checkpoints/ventilator_l40_h40/crosslinear.pt"
+  },
+  "timexer": {
+   "mse_normalized": 0.00785,
+   "checkpoint": "checkpoints/ventilator_l40_h40/timexer.pt"
+  },
+  "tide": {
+   "mse_normalized": 0.00152,
+   "checkpoint": "checkpoints/ventilator_l40_h40/tide.pt"
+  },
+  "timemixer": {
+   "mse_normalized": 0.00153,
+   "checkpoint": "checkpoints/ventilator_l40_h40/timemixer.pt"
+  },
+  "patchtst": {
+   "mse_normalized": 0.00903,
+   "checkpoint": "checkpoints/ventilator_l40_h40/patchtst.pt"
+  },
+  "dlinear": {
+   "mse_normalized": 0.0042,
+   "checkpoint": "checkpoints/ventilator_l40_h40/dlinear.pt"
+  },
+  "persistence": {
+   "mse_normalized": 0.04369,
+   "checkpoint": "checkpoints/ventilator_l40_h40/persistence.pt"
+  }
+ },
+ "pmsm_l60_h60": {
+  "imamba": {
+   "mse_normalized": 0.00028,
+   "checkpoint": "checkpoints/pmsm_l60_h60/imamba.pt"
+  },
+  "kite": {
+   "mse_normalized": 0.00116,
+   "checkpoint": "checkpoints/pmsm_l60_h60/kite.pt"
+  },
+  "dag": {
+   "mse_normalized": 0.00191,
+   "checkpoint": "checkpoints/pmsm_l60_h60/dag.pt"
+  },
+  "crosslinear": {
+   "mse_normalized": 0.00081,
+   "checkpoint": "checkpoints/pmsm_l60_h60/crosslinear.pt"
+  },
+  "timexer": {
+   "mse_normalized": 0.00082,
+   "checkpoint": "checkpoints/pmsm_l60_h60/timexer.pt"
+  },
+  "tide": {
+   "mse_normalized": 0.00077,
+   "checkpoint": "checkpoints/pmsm_l60_h60/tide.pt"
+  },
+  "timemixer": {
+   "mse_normalized": 0.00084,
+   "checkpoint": "checkpoints/pmsm_l60_h60/timemixer.pt"
+  },
+  "patchtst": {
+   "mse_normalized": 0.00109,
+   "checkpoint": "checkpoints/pmsm_l60_h60/patchtst.pt"
+  },
+  "dlinear": {
+   "mse_normalized": 0.00124,
+   "checkpoint": "checkpoints/pmsm_l60_h60/dlinear.pt"
+  },
+  "persistence": {
+   "mse_normalized": 0.00192,
+   "checkpoint": "checkpoints/pmsm_l60_h60/persistence.pt"
+  },
+  "lstm": {
+   "mse_normalized": 0.00036,
+   "checkpoint": "checkpoints/pmsm_l60_h60/lstm.best.pt"
+  }
+ },
+ "sysid_wienerhammer": {
+  "imamba": {
+   "mse_normalized": 0.00063,
+   "checkpoint": "checkpoints/sysid_wienerhammer/imamba.pt"
+  },
+  "lstm": {
+   "mse_normalized": 6e-05,
+   "checkpoint": "checkpoints/sysid_wienerhammer/lstm.pt"
+  },
+  "kite": {
+   "mse_normalized": 0.05866,
+   "checkpoint": "checkpoints/sysid_wienerhammer/kite.pt"
+  },
+  "dag": {
+   "mse_normalized": 0.23346,
+   "checkpoint": "checkpoints/sysid_wienerhammer/dag.pt"
+  },
+  "crosslinear": {
+   "mse_normalized": 0.30605,
+   "checkpoint": "checkpoints/sysid_wienerhammer/crosslinear.pt"
+  },
+  "timexer": {
+   "mse_normalized": 0.04551,
+   "checkpoint": "checkpoints/sysid_wienerhammer/timexer.pt"
+  },
+  "tide": {
+   "mse_normalized": 0.30967,
+   "checkpoint": "checkpoints/sysid_wienerhammer/tide.pt"
+  },
+  "timemixer": {
+   "mse_normalized": 0.28343,
+   "checkpoint": "checkpoints/sysid_wienerhammer/timemixer.pt"
+  },
+  "patchtst": {
+   "mse_normalized": 1.01183,
+   "checkpoint": "checkpoints/sysid_wienerhammer/patchtst.pt"
+  },
+  "dlinear": {
+   "mse_normalized": 0.83313,
+   "checkpoint": "checkpoints/sysid_wienerhammer/dlinear.pt"
+  },
+  "persistence": {
+   "mse_normalized": 1.77289,
+   "checkpoint": "checkpoints/sysid_wienerhammer/persistence.pt"
+  }
+ },
+ "sysid_cascadedtanks": {
+  "imamba": {
+   "mse_normalized": 0.1425,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/imamba.pt"
+  },
+  "lstm": {
+   "mse_normalized": 0.19178,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/lstm.pt"
+  },
+  "kite": {
+   "mse_normalized": 0.91549,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/kite.pt"
+  },
+  "dag": {
+   "mse_normalized": 0.64915,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/dag.pt"
+  },
+  "crosslinear": {
+   "mse_normalized": 1.03801,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/crosslinear.pt"
+  },
+  "timexer": {
+   "mse_normalized": 0.70723,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/timexer.pt"
+  },
+  "tide": {
+   "mse_normalized": 0.86172,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/tide.pt"
+  },
+  "timemixer": {
+   "mse_normalized": 0.98358,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/timemixer.pt"
+  },
+  "patchtst": {
+   "mse_normalized": 1.05596,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/patchtst.pt"
+  },
+  "dlinear": {
+   "mse_normalized": 0.9132,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/dlinear.pt"
+  },
+  "persistence": {
+   "mse_normalized": 1.05066,
+   "checkpoint": "checkpoints/sysid_cascadedtanks/persistence.pt"
+  }
+ },
+ "sysid_silverbox": {
+  "imamba": {
+   "mse_normalized": 0.00259,
+   "checkpoint": "checkpoints/sysid_silverbox/imamba.pt"
+  },
+  "lstm": {
+   "mse_normalized": 0.00068,
+   "checkpoint": "checkpoints/sysid_silverbox/lstm.pt"
+  },
+  "kite": {
+   "mse_normalized": 0.04988,
+   "checkpoint": "checkpoints/sysid_silverbox/kite.pt"
+  },
+  "dag": {
+   "mse_normalized": 0.08706,
+   "checkpoint": "checkpoints/sysid_silverbox/dag.pt"
+  },
+  "crosslinear": {
+   "mse_normalized": 0.0833,
+   "checkpoint": "checkpoints/sysid_silverbox/crosslinear.pt"
+  },
+  "timexer": {
+   "mse_normalized": 0.04733,
+   "checkpoint": "checkpoints/sysid_silverbox/timexer.pt"
+  },
+  "tide": {
+   "mse_normalized": 0.68935,
+   "checkpoint": "checkpoints/sysid_silverbox/tide.pt"
+  },
+  "timemixer": {
+   "mse_normalized": 0.06459,
+   "checkpoint": "checkpoints/sysid_silverbox/timemixer.pt"
+  },
+  "patchtst": {
+   "mse_normalized": 0.68067,
+   "checkpoint": "checkpoints/sysid_silverbox/patchtst.pt"
+  },
+  "dlinear": {
+   "mse_normalized": 0.6734,
+   "checkpoint": "checkpoints/sysid_silverbox/dlinear.pt"
+  },
+  "persistence": {
+   "mse_normalized": 1.72935,
+   "checkpoint": "checkpoints/sysid_silverbox/persistence.pt"
+  }
+ }
+}
