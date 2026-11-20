@@ -13,32 +13,26 @@ historical exogenous inputs, and a known future control path; every
 dataset–model entry is recorded in `configs/main_table_runs.json` with its
 model configuration, training hyperparameters, and reported value.
 
-The evaluation is limited to forecasting under supplied future inputs;
-generalization to changed input policies and performance in closed-loop control
-are outside its scope.
-
 ## Getting started
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Trained weights are distributed as a release asset (`checkpoints_all.zip`).
-Unzip it into the repository root to obtain `checkpoints/<dataset>/<model>.pt`,
-then reproduce the table:
-
-```bash
-python eval_main_table.py --device cuda
-```
-
-Alternatively, train an entry with the recorded configuration:
+Train an entry with its recorded configuration:
 
 ```bash
 python train_main_table.py --dataset sysid_cascadedtanks --model imamba --device cuda
 ```
 
-Both scripts accept `--only <dataset>/<model>` (evaluation) or `--dataset`/`--model`
-(training) to select a single entry; `--epochs 1` gives a quick smoke test.
+Evaluate the models against the reported table:
+
+```bash
+python eval_main_table.py --device cuda
+```
+
+Both scripts accept `--only <dataset>/<model>` or `--dataset`/`--model` to select
+a single entry, and `--epochs 1` gives a quick smoke test.
 
 ## Repository layout
 
@@ -49,7 +43,7 @@ icb/                           models, adapters, evaluation protocol, training e
 third_party_repos/DAG/         vendored TSLib code used by six adapters
 reformer_pytorch.py            vendored dependency of the TSLib attention layers
 train_main_table.py            trains an entry with its recorded configuration
-eval_main_table.py             evaluates released checkpoints against the table
+eval_main_table.py             evaluates trained models against the table
 ```
 
 ## TokaMark data
