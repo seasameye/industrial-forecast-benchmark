@@ -46,5 +46,6 @@ Select a single entry with `--only <dataset>/<model>` (evaluation) or
 
 ## TokaMark
 
-TokaMark Task 2–1 is not included because the windowed dataset is 7.2 GB. It is
-available on request from the authors.
+TokaMark Task 2–1 is not included because its windowed dataset is 7.2 GB. The
+raw measurements are publicly available from the original TokaMark publication
+and can be windowed into the same format as the other datasets.
