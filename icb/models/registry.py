@@ -4,10 +4,6 @@ from __future__ import annotations
 from typing import Any
 
 from .imamba import IntegralControlMamba
-from .imamba_flat import FlattenedIntegralControlMamba
-from .imamba_masked import MaskedFlattenedIntegralControlMamba
-from .imamba_variants import (ControlIndependentMamba, DirectReadoutMamba,
-                              ZeroControlTransitionMamba)
 from .lstm import LSTMEncDec
 from .official_dag import OfficialDAGAdapter
 from .official_timexer import OfficialTimeXerAdapter
@@ -24,10 +20,6 @@ def available_models() -> list[str]:
         "persistence",
         "lstm",
         "imamba",
-        "imamba_flat",
-        "imamba_masked",
-        "imamba_ci_transition",
-        "imamba_direct_readout",
         "crosslinear",
         "tide",
         "timexer",
@@ -58,61 +50,6 @@ def build_model(name: str, d_y: int, d_u: int, L: int, H: int,
             n_layers=kwargs.get("n_layers", 2),
             max_horizon=H,
             dropout=kwargs.get("dropout", 0.0),
-        )
-    if key in ("imamba_ci_transition", "imamba_control_independent",
-               "control_independent_mamba"):
-        return ControlIndependentMamba(
-            d_y=d_y,
-            d_u=d_u,
-            d_model=kwargs.get("d_model", 64),
-            n_state=kwargs.get("n_state", 8),
-            n_layers=kwargs.get("n_layers", 2),
-            max_horizon=H,
-            dropout=kwargs.get("dropout", 0.0),
-        )
-    if key in ("imamba_ci_zero", "zero_control_transition"):
-        return ZeroControlTransitionMamba(
-            d_y=d_y,
-            d_u=d_u,
-            d_model=kwargs.get("d_model", 64),
-            n_state=kwargs.get("n_state", 8),
-            n_layers=kwargs.get("n_layers", 2),
-            max_horizon=H,
-            dropout=kwargs.get("dropout", 0.0),
-        )
-    if key in ("imamba_direct_readout", "direct_readout_mamba"):
-        return DirectReadoutMamba(
-            d_y=d_y,
-            d_u=d_u,
-            d_model=kwargs.get("d_model", 64),
-            n_state=kwargs.get("n_state", 8),
-            n_layers=kwargs.get("n_layers", 2),
-            max_horizon=H,
-            dropout=kwargs.get("dropout", 0.0),
-        )
-    if key in ("imamba_masked", "masked_imamba"):
-        return MaskedFlattenedIntegralControlMamba(
-            d_y=d_y,
-            d_u=d_u,
-            H=H,
-            d_model=kwargs.get("d_model", 64),
-            n_state=kwargs.get("n_state", 8),
-            n_layers=kwargs.get("n_layers", 2),
-            max_horizon=H,
-            dropout=kwargs.get("dropout", 0.0),
-            flat_hidden=kwargs.get("flat_hidden", None),
-        )
-    if key in ("imamba_flat", "flat_imamba", "flattened_imamba"):
-        return FlattenedIntegralControlMamba(
-            d_y=d_y,
-            d_u=d_u,
-            H=H,
-            d_model=kwargs.get("d_model", 64),
-            n_state=kwargs.get("n_state", 8),
-            n_layers=kwargs.get("n_layers", 2),
-            max_horizon=H,
-            dropout=kwargs.get("dropout", 0.0),
-            flat_hidden=kwargs.get("flat_hidden", None),
         )
     if key == "crosslinear":
         return TSLibAdapter("CrossLinear", d_y, d_u, L, H, **kwargs)

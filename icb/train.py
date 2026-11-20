@@ -39,7 +39,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Train a model on an ICB NPZ file.")
     ap.add_argument("--data", required=True)
     ap.add_argument("--model", required=True,
-                    help="persistence|lstm|imamba|imamba_flat|crosslinear|tide|timexer|timemixer|patchtst|dlinear|dag|kite")
+                    help="persistence|lstm|imamba|crosslinear|tide|timexer|timemixer|patchtst|dlinear|dag|kite")
     ap.add_argument("--model_config", default=None,
                     help="JSON object passed to the model adapter.")
     ap.add_argument("--set", nargs="*", default=[],

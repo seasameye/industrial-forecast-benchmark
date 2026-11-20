@@ -33,19 +33,18 @@ def main():
     ap.add_argument("--only", default=None, help="substring filter on dataset/model")
     args = ap.parse_args()
 
-    table = json.loads((ROOT / "table2.json").read_text())
     runs = json.loads((ROOT / "configs" / "main_table_runs.json").read_text())
-    index = {(r["dataset"], r["model"]): r for r in runs}
 
     rows, n_ok, skipped = [], 0, 0
     cache = {}
-    for ds, models in table.items():
-        for mdl, entry in models.items():
+    for rec in runs:
+        if True:
+            ds, mdl = rec["dataset"], rec["model"]
+            entry = rec.get("table_entry") or {}
             tag = f"{ds}/{mdl}"
             if args.only and args.only not in tag:
                 continue
-            rec = index.get((ds, mdl))
-            if rec is None or not rec.get("checkpoint"):
+            if not rec.get("checkpoint"):
                 print("%-42s SKIP (config only, no checkpoint released)" % tag, flush=True)
                 skipped += 1
                 continue
@@ -69,7 +68,7 @@ def main():
             torch.manual_seed(0)
             model = build_and_load(rec, data, args.device)
             m = evaluate(model, data["test"])
-            want = entry["mse_normalized"]
+            want = entry.get("mse_normalized")
             got = m["mse_normalized"]
             rel = abs(got - want) / max(abs(want), 1e-12)
             # KITE draws Monte-Carlo samples at inference time; the other models
