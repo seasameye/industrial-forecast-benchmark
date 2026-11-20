@@ -3,6 +3,7 @@
  "dataset": "tokamark_task_2-1",
  "checkpoint": null,
  "model_config": {
+  "exo_mode": "future_as_channels",
   "d_model": 128,
   "d_ff": 256,
   "e_layers": 1,
@@ -16,6 +17,7 @@
   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
  },
  "params": 424824,
+ "appendix_params": 424824,
  "table_entry": {
   "mse_normalized": 0.05692,
   "mae_normalized": 0.0602

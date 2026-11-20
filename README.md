@@ -58,6 +58,9 @@ python -m icb.train --data data/tokamark_task_2-1.npz --model imamba \
 
 Notes for this dataset:
 - iMamba uses $d=96$, $N=16$, dropout $0.05$ (Supplementary Table S3);
+- the adapters use the same exogenous conventions as the other datasets:
+  `future_as_channels` for CrossLinear, TimeMixer, and PatchTST, `native` for
+  TiDE, and `hist` for DLinear (recorded in each configuration file);
 - iMamba and LSTM use batch size 256;
 - the horizon is $H=100>L=20$, so the general-purpose adapters
   (TimeMixer, PatchTST, DLinear) consume the first 20 future-control steps,

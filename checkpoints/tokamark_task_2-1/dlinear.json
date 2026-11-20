@@ -3,7 +3,9 @@
  "dataset": "tokamark_task_2-1",
  "checkpoint": null,
  "model_config": {
-  "moving_avg": 25
+  "exo_mode": "hist",
+  "moving_avg": 25,
+  "individual": false
  },
  "training_config": {
   "batch_size": 64,
@@ -11,10 +13,12 @@
   "epochs": null,
   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
  },
- "params": 7320,
+ "params": 4200,
+ "appendix_params": 7320,
  "table_entry": {
   "mse_normalized": 0.1455,
   "mae_normalized": 0.1335
  },
- "source": "Supplementary Table S3 (no checkpoint released)"
+ "source": "Supplementary Table S3 (no checkpoint released)",
+ "params_note": "appendix prints 7,320, which is the value for the 60-step datasets; on TokaMark (L=20, H=100) the model builds to 4,200."
 }

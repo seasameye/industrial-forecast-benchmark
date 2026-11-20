@@ -10,6 +10,7 @@
   "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
  },
  "params": 0,
+ "appendix_params": 0,
  "table_entry": {
   "mse_normalized": 0.1744,
   "mae_normalized": 0.1062

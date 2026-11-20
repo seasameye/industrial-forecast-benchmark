@@ -15,6 +15,7 @@
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
   "params": 930621,
+  "appendix_params": 930621,
   "table_entry": {
    "mse_normalized": 0.01866,
    "mae_normalized": 0.04394
@@ -36,6 +37,7 @@
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
   "params": 421021,
+  "appendix_params": 421021,
   "table_entry": {
    "mse_normalized": 0.02046,
    "mae_normalized": 0.04474
@@ -60,6 +62,7 @@
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
   "params": 6270087,
+  "appendix_params": 6270087,
   "table_entry": {
    "mse_normalized": 0.2953,
    "mae_normalized": 0.0937
@@ -70,10 +73,10 @@
   "dataset": "tokamark_task_2-1",
   "model": "dag",
   "model_config": {
-   "d_model": 128,
-   "d_ff": 256,
+   "d_model": 256,
+   "d_ff": 512,
+   "n_heads": 8,
    "e_layers": 2,
-   "n_heads": 4,
    "patch_len": 16,
    "stride": 8,
    "dropout": 0.1
@@ -85,6 +88,7 @@
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
   "params": 4698360,
+  "appendix_params": 4698360,
   "table_entry": {
    "mse_normalized": 0.0706,
    "mae_normalized": 0.1018
@@ -95,6 +99,7 @@
   "dataset": "tokamark_task_2-1",
   "model": "crosslinear",
   "model_config": {
+   "exo_mode": "future_as_channels",
    "d_model": 128,
    "d_ff": 256,
    "e_layers": 1,
@@ -108,6 +113,7 @@
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
   "params": 424824,
+  "appendix_params": 424824,
   "table_entry": {
    "mse_normalized": 0.05692,
    "mae_normalized": 0.0602
@@ -118,10 +124,12 @@
   "dataset": "tokamark_task_2-1",
   "model": "tide",
   "model_config": {
+   "exo_mode": "native",
    "d_model": 256,
    "d_ff": 256,
    "e_layers": 2,
    "d_layers": 1,
+   "c_out_native": 16,
    "dropout": 0.1
   },
   "training_config": {
@@ -130,12 +138,14 @@
    "epochs": null,
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
-  "params": 1298524,
+  "params": 1298522,
+  "appendix_params": 1298524,
   "table_entry": {
    "mse_normalized": 0.0656,
    "mae_normalized": 0.076
   },
-  "checkpoint": null
+  "checkpoint": null,
+  "params_note": "appendix prints 1,298,524; the stated configuration builds to 1,298,522 (two parameters)."
  },
  {
   "dataset": "tokamark_task_2-1",
@@ -155,6 +165,7 @@
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
   "params": 1775204,
+  "appendix_params": 1775204,
   "table_entry": {
    "mse_normalized": 0.1105,
    "mae_normalized": 0.0948
@@ -165,11 +176,14 @@
   "dataset": "tokamark_task_2-1",
   "model": "timemixer",
   "model_config": {
+   "exo_mode": "future_as_channels",
    "d_model": 128,
    "d_ff": 256,
-   "e_layers": 2,
+   "e_layers": 1,
    "down_sampling_layers": 2,
+   "down_sampling_window": 2,
    "moving_avg": 25,
+   "channel_independence": 0,
    "dropout": 0.1
   },
   "training_config": {
@@ -179,16 +193,19 @@
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
   "params": 162480,
+  "appendix_params": 162480,
   "table_entry": {
    "mse_normalized": 0.0375,
    "mae_normalized": 0.06077
   },
-  "checkpoint": null
+  "checkpoint": null,
+  "params_note": "appendix text says 2 layers, but its parameter count corresponds to 1 layer."
  },
  {
   "dataset": "tokamark_task_2-1",
   "model": "patchtst",
   "model_config": {
+   "exo_mode": "future_as_channels",
    "d_model": 128,
    "d_ff": 256,
    "n_heads": 8,
@@ -203,18 +220,22 @@
    "epochs": null,
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
-  "params": 261348,
+  "params": 292964,
+  "appendix_params": 261348,
   "table_entry": {
    "mse_normalized": 0.10281,
    "mae_normalized": 0.09026
   },
-  "checkpoint": null
+  "checkpoint": null,
+  "params_note": "appendix prints 261,348; no configuration of this adapter produces it (the stated configuration builds to 292,964)."
  },
  {
   "dataset": "tokamark_task_2-1",
   "model": "dlinear",
   "model_config": {
-   "moving_avg": 25
+   "exo_mode": "hist",
+   "moving_avg": 25,
+   "individual": false
   },
   "training_config": {
    "batch_size": 64,
@@ -222,12 +243,14 @@
    "epochs": null,
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
-  "params": 7320,
+  "params": 4200,
+  "appendix_params": 7320,
   "table_entry": {
    "mse_normalized": 0.1455,
    "mae_normalized": 0.1335
   },
-  "checkpoint": null
+  "checkpoint": null,
+  "params_note": "appendix prints 7,320, which is the value for the 60-step datasets; on TokaMark (L=20, H=100) the model builds to 4,200."
  },
  {
   "dataset": "tokamark_task_2-1",
@@ -240,6 +263,7 @@
    "note": "epoch budget chosen by validation MSE (40/60/80/100/150); see Supplementary Table S3"
   },
   "params": 0,
+  "appendix_params": 0,
   "table_entry": {
    "mse_normalized": 0.1744,
    "mae_normalized": 0.1062
