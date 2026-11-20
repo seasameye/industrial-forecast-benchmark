@@ -35,6 +35,11 @@ python eval_main_table.py --device cuda
 Select a single entry with `--only <dataset>/<model>` (evaluation) or
 `--dataset` / `--model` (training). Add `--epochs 1` for a quick smoke test.
 
+Weights are looked up first in `checkpoints/<dataset>/<model>.pt` and then in
+`runs/<dataset>_<model>_seed0.best.pt`, so downloaded weights placed under
+`checkpoints/` are evaluated as well. Use `--ckpt-dir <dir>` to read them from a
+different directory.
+
 ## Repository layout
 
 | Path | Contents |
