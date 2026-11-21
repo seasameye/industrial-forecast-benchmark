@@ -74,7 +74,32 @@ training and evaluation time using the stored statistics.
 
 ## TokaMark
 
-TokaMark Task 2–1 (29 targets, 5 future controls, L = 20, H = 100,
-381068 / 44872 / 47363 windows) is not included because the windowed file is
-7.2 GB. The raw measurements are available from the original TokaMark
-publication and can be windowed into the format above.
+TokaMark Task 2–1 is not included because the windowed file is 7.2 GB.
+
+| Property | Value |
+|---|---|
+| Task | `task_2-1` |
+| Targets $\mathbf{y}$ | 29 plasma-current and equilibrium quantities |
+| Future controls $\mathbf{u}$ | 4 coil voltages + neutral-beam injection power |
+| Window | $L=20$, $H=100$, stride $=40$ |
+| Split | 381068 / 44872 / 47363 (official random shot split, fixed discharge-ID lists, only shots containing all required signals) |
+
+The raw shots come from the TokaMark release. Once the `tokamark` package and
+its MAST zarr store are available:
+
+```bash
+python scripts/prepare_tokamark_task.py --task task_2-1 \
+    --zarr-root /path/to/tokamark_data/data \
+    --L 20 --H 100 --stride 40 \
+    --out data/tokamark_task_2-1.npz
+```
+
+The script streams shot batches, windows each split independently, and writes
+the same NPZ keys as the other datasets (it requires Python 3.9 or newer). `--map-only` prints the channel
+mapping without loading any shots, and `--max-train/--max-val/--max-test` build
+a smaller subset for smoke tests.
+
+Because $H=100>L=20$, the four channel-concatenating adapters (CrossLinear,
+TimeMixer, PatchTST, DLinear) average-pool the future path from $H$ to $L$
+bins before concatenation; the other models consume the full 100 steps through
+their native interfaces.
