@@ -99,7 +99,3 @@ the same NPZ keys as the other datasets (it requires Python 3.9 or newer). `--ma
 mapping without loading any shots, and `--max-train/--max-val/--max-test` build
 a smaller subset for smoke tests.
 
-Because $H=100>L=20$, the four channel-concatenating adapters (CrossLinear,
-TimeMixer, PatchTST, DLinear) average-pool the future path from $H$ to $L$
-bins before concatenation; the other models consume the full 100 steps through
-their native interfaces.
