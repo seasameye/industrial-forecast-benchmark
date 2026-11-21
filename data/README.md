@@ -66,8 +66,9 @@ Every file stores the same keys:
 
 Windows are cut inside each split, so no window crosses a split boundary.
 
-Running the three `make_sysid.py` commands above reproduces the shipped
-`sysid_*.npz` files exactly (identical arrays and split sizes).
+Running the three `make_sysid.py` commands and the `prepare_pmsm.py` command
+above reproduces the shipped `sysid_*.npz` and `pmsm_l60_h60.npz` files exactly
+(identical arrays, normalization statistics, and split sizes).
 Inputs and targets are stored in physical units; normalization is applied at
 training and evaluation time using the stored statistics.
 
