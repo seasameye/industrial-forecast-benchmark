@@ -41,6 +41,7 @@ class TSLibAdapter(nn.Module):
         H: int,
         repo: str | None = None,
         exo_mode: str = "hist",
+        future_alignment: str = "error",
         d_model: int = 256,
         d_ff: int = 1024,
         e_layers: int = 1,
@@ -66,6 +67,7 @@ class TSLibAdapter(nn.Module):
         self.L = L
         self.H = H
         self.exo_mode = exo_mode
+        self.future_alignment = future_alignment
         if exo_mode == "native":
             n_vars = d_y
         elif exo_mode == "future_as_channels":
@@ -174,10 +176,17 @@ class TSLibAdapter(nn.Module):
             if u_future.shape[1] == self.L:
                 uf_aligned = u_future
             elif u_future.shape[1] > self.L:
-                # Appendix (§S-II-B): when H > L the path is truncated to the
-                # first L steps, so on TokaMark (L=20, H=100) the model sees the
-                # first 20 of the 100 future control steps.
-                uf_aligned = u_future[:, : self.L]
+                if self.future_alignment == "avgpool_to_history":
+                    # average-pool the H future bins into L bins (parameter free)
+                    uf_aligned = torch.nn.functional.adaptive_avg_pool1d(
+                        u_future.transpose(1, 2), self.L).transpose(1, 2)
+                elif self.future_alignment == "truncate_to_history":
+                    uf_aligned = u_future[:, : self.L]
+                else:
+                    raise ValueError(
+                        "future_as_channels cannot consume H>L without an explicit "
+                        "alignment policy; set future_alignment=avgpool_to_history "
+                        "or truncate_to_history.")
             else:
                 pad = u_future[:, -1:].expand(-1, self.L - u_future.shape[1], -1)
                 uf_aligned = torch.cat([u_future, pad], 1)

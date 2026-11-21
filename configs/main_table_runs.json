@@ -1362,7 +1362,8 @@
    "d_ff": 256,
    "e_layers": 1,
    "patch_len": 4,
-   "dropout": 0.1
+   "dropout": 0.1,
+   "future_alignment": "avgpool_to_history"
   },
   "training_config": {
    "batch_size": 64,
@@ -1408,7 +1409,8 @@
   "model_config": {
    "exo_mode": "future_as_channels",
    "moving_avg": 25,
-   "individual": false
+   "individual": false,
+   "future_alignment": "avgpool_to_history"
   },
   "training_config": {
    "batch_size": 64,
@@ -1480,7 +1482,8 @@
    "e_layers": 2,
    "patch_len": 16,
    "stride": 8,
-   "dropout": 0.1
+   "dropout": 0.1,
+   "future_alignment": "avgpool_to_history"
   },
   "training_config": {
    "batch_size": 64,
@@ -1551,7 +1554,8 @@
    "down_sampling_window": 2,
    "moving_avg": 25,
    "channel_independence": 0,
-   "dropout": 0.1
+   "dropout": 0.1,
+   "future_alignment": "avgpool_to_history"
   },
   "training_config": {
    "batch_size": 64,
