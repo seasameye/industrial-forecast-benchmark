@@ -5,7 +5,7 @@ prediction — a pump-voltage schedule, a sequence of valve commands. A model of
 the resulting response should preserve **prefix consistency**: changing a later
 action must not change predictions before that action.
 
-This repository provides seven industrial datasets and ten forecasting models
+This repository covers seven industrial datasets and ten forecasting models
 under this setting. Each dataset supplies historical targets, historical
 exogenous inputs, and the future trajectory of its **control variables** — the
 actuator commands and other exogenous inputs that are fixed before prediction
@@ -55,5 +55,6 @@ different directory.
 ## Note
 
 TokaMark Task 2–1 is not included because its windowed dataset is 7.2 GB. The
-raw measurements are publicly available from the original TokaMark publication
-and can be windowed into the same format as the other datasets.
+raw measurements are available from the original TokaMark publication and can
+be converted with `scripts/prepare_tokamark_task.py`; see `data/README.md` for
+the window parameters and channel mapping.
