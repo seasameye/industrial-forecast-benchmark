@@ -1,0 +1,7 @@
+{
+  "script": "scripts/prepare_ventilator.py",
+  "example": "python scripts/prepare_ventilator.py --train_csv /data/ventilator/train.csv --L 40 --H 40 --stride 40 --out data/ventilator_l40_h40.npz",
+  "y_role": "airway pressure",
+  "u_role": "u_in, u_out, R, C"
+}
+

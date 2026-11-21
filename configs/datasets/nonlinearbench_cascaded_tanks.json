@@ -1,0 +1,7 @@
+{
+  "script": "scripts/prepare_system_id.py",
+  "example": "python scripts/prepare_system_id.py --file /data/CascadedTanksFiles/dataBenchmark.mat --y_key y --u_key u --dataset cascaded_tanks --L 128 --H 128 --stride 64 --out data/cascaded_tanks.npz",
+  "y_role": "measured output",
+  "u_role": "known input signal"
+}
+

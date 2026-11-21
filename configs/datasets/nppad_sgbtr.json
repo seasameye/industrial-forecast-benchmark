@@ -1,0 +1,7 @@
+{
+  "script": "scripts/prepare_nppad.py",
+  "example": "python scripts/prepare_nppad.py --root /data/NuclearPowerPlantAccidentData --types SGBTR --L 60 --H 60 --stride 30 --out data/nppad_sgbtr.npz",
+  "y_role": "PCTRAN PlotData continuous plant variables",
+  "u_role": "event-report actions, malfunctions, scram, optional severity"
+}
+

@@ -44,8 +44,9 @@ different directory.
 
 | Path | Contents |
 |---|---|
-| `data/` | windowed NPZ datasets |
+| `data/` | windowed NPZ datasets (sources and preprocessing in `data/README.md`) |
 | `configs/main_table_runs.json` | configurations for each dataset–model pair |
+| `configs/datasets/`, `scripts/` | dataset descriptors and preprocessing scripts |
 | `icb/` | models, adapters, evaluation protocol, training entry |
 | `third_party_repos/DAG/` | vendored TSLib code used by six adapters, including its `reformer_pytorch` dependency |
 | `train_main_table.py` | trains a model on a dataset |
